@@ -1,0 +1,25 @@
+{
+  "name": "novus-browser",
+  "version": "1.0.0",
+  "description": "open source electron-based web browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wayoutware/novus-browser.git"
+  },
+  "keywords": [
+    "browser"
+  ],
+  "author": "wayoutware sp",
+  "license": "MPL",
+  "bugs": {
+    "url": "https://github.com/wayoutware/novus-browser/issues"
+  },
+  "homepage": "https://github.com/wayoutware/novus-browser#readme",
+  "dependencies": {
+    "electron": "^4.0.6"
+  }
+}
