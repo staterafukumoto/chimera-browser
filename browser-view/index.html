@@ -28,19 +28,31 @@ Unmaximize/restore
 </div>
 </div>
 <div id="tabregion">
-
 </div>
-<input type="text" id="urlbar" placeholder="Type a URL Here">
+
+<div id="newtabbutton" onclick="makeNewTab()"> + </div>
+
+<input type="text" id="urlbar" placeholder="Type a URL Here" onclick="this.select()">
+
 <div id="navbuttons">
-        <span id="backbutton" class="material-icons ubarnavbtn" onclick="">arrow_back</span>
-        <span id="fwdbutton" class="material-icons ubarnavbtn" onclick="">arrow_forward</span>
+        <span id="backbutton" class="material-icons ubarnavbtn" onclick="goBackActive()">arrow_back</span>
+        <span id="fwdbutton" class="material-icons ubarnavbtn" onclick="goFwdActive()">arrow_forward</span>
+        <span id="fwdbutton" class="material-icons ubarnavbtn" onclick="refreshActive()">refresh</span>
+</div>
+
+<div id="endingbuttons">
+        <span id="backbutton" class="material-icons ubarnavbtn" onclick="">open_in_new</span>
+        <span id="backbutton" class="material-icons ubarnavbtn" onclick="">menu</span>
 </div>
 
 </div>
-<webview src="https://www.google.com" id="mainarea"></webview>
+
 
 <script src="declarations.js"></script>
 <script src="wmanager.js"></script>
+<script src="uilogic.js"></script>
 <script src="weblogic.js"></script>
+<script src="tabscroll.js"></script>
+<script src="webviewlaunch.js"></script>
 </body>
 </html>

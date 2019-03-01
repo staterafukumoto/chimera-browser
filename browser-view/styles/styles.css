@@ -1,3 +1,7 @@
+body{
+    background: white;
+}
+
 #titlebar-region{
     -webkit-app-region: drag;
     position: absolute;
@@ -5,12 +9,8 @@
     right: 0px;
     top: 0px;
     height: 68px;
-    background: #0072c6;
+    background: #343538;
     cursor: default;
-}
-
-.titlebar-blue{
-    background: #0072c6;
 }
 
 .ui-titlebar {
@@ -64,14 +64,42 @@
   height: 10px;
 }
 
+#newtabbutton{
+    background: rgba(1, 1, 1, 0.15);
+    position: absolute;
+    height: 32px;
+    width: 25px;
+    right: 145px;
+    top: 0px;
+    text-align: center;
+    line-height: 32px;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    user-select: none;
+    cursor: default;
+    -webkit-app-region: no-drag;
+}
+
+#newtabbutton:hover{
+    background: rgba(1, 1, 1, 0.25);
+}
+
 #tabregion{
     background: rgba(1, 1, 1, 0.1);
     position: absolute;
     left: 0px; 
-    right: 145px;
+    right: 170px;
     top: 0px;
     height: 32px;
     -webkit-app-region: drag;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+#tabregion::-webkit-scrollbar { 
+    display: none; 
 }
 
 #urlbar{
@@ -99,8 +127,17 @@
 #navbuttons{
     color: white;
     font-size: 32px;
-    padding-top: 1px;
-    padding-left: 4px;
+    position: absolute;
+    left: 4px;
+    top: 34px;
+}
+
+#endingbuttons{
+    color: white;
+    font-size: 32px;
+    position: absolute;
+    right: 4px;
+    top: 34px;
 }
 
 .ubarnavbtn{
@@ -112,10 +149,40 @@
     filter: opacity(0.6);
 }
 
-#mainarea{
+webview{
+    display: none;
+}
+
+.activewbv{
     position: absolute;
+    display: inline-flex;
     left: 0px;
     right: 0px;
     bottom: 0px;
     top: 68px;
+}
+
+.tab{
+    -webkit-app-region: no-drag;
+    user-select: none;
+    position: relative;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0px;
+    margin-right: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.05);
+    width: auto;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+.activetab{
+    background: rgba(255,255,255,0.15) !important;
 }
