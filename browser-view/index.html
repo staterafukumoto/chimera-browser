@@ -32,7 +32,7 @@ Unmaximize/restore
 
 <div id="newtabbutton" onclick="makeNewTab()"> + </div>
 
-<input type="text" id="urlbar" placeholder="Type a URL Here" onclick="this.select()">
+<input type="text" id="urlbar" placeholder="" onclick="this.select()">
 
 <div id="navbuttons">
         <span id="backbutton" class="material-icons ubarnavbtn" onclick="goBackActive()">arrow_back</span>
@@ -45,9 +45,19 @@ Unmaximize/restore
         <span id="backbutton" class="material-icons ubarnavbtn" onclick="">menu</span>
 </div>
 
+<div id="loaderwrapper">
+    <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 </div>
 
+</div> <!-- titlebar -->
 
+
+<script src="waywork.js"></script>
 <script src="declarations.js"></script>
 <script src="wmanager.js"></script>
 <script src="uilogic.js"></script>

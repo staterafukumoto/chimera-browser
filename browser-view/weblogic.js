@@ -1,7 +1,3 @@
-// function parseBarcontent(){
-
-// }
-
 function goBackActive(){
     document.getElementsByClassName("activewbv")[0].goBack()
 }
@@ -23,8 +19,20 @@ function fillURLBar(){
 }
 
 function fillTabName(){
-    document.getElementsByClassName("activetab")[0].innerHTML = document.getElementsByClassName("activewbv")[0].getTitle()
-    document.getElementsByClassName("activetab")[0].title = document.getElementsByClassName("activewbv")[0].getTitle()
+    try{
+        // document.getElementsByClassName("activetab")[0].firstChild.innerHTML = document.getElementsByClassName("activewbv")[0].getTitle()
+
+        if(document.getElementsByClassName("activewbv")[0].getTitle() != ""){
+            document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  document.getElementsByClassName("activewbv")[0].getTitle()
+            document.getElementsByClassName("activetab")[0].childNodes[1].title =  document.getElementsByClassName("activewbv")[0].getTitle()
+        } else{
+            document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  "Initializing"
+            document.getElementsByClassName("activetab")[0].childNodes[1].title =  "Initializing"
+        }
+    }catch(err){
+        // document.getElementsByClassName("activetab")[0].innerHTML = ""
+        // document.getElementsByClassName("activetab")[0].title = ""
+    }
 }
 
 window.setInterval(fillURLBar,60)
@@ -78,4 +86,3 @@ function googleSearch(input){
     var safe = encodeURI(input)
     goTo("https://www.google.com/search?q=" + safe)
 }
-

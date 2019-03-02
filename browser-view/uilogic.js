@@ -1,6 +1,19 @@
 function browserTheme(colour){
     //change the colour of the browser
-    document.getElementById("titlebar-region").style.background = colour
+    if (colour == "default"){
+        document.getElementById("titlebar-region").style.background = "#444"
+    } else{
+        document.getElementById("titlebar-region").style.background = colour
+    }
+}
+
+function webViewNightMode(arg){
+    //true or false
+    if (arg == true){
+        document.getElementsByClassName("activewbv")[0].style.filter = "invert(1)"
+    } else{
+        document.getElementsByClassName("activewbv")[0].style.filter = "invert(0)"
+    }
 }
 
 function makeNewTabLabel(uuid){
@@ -8,20 +21,41 @@ function makeNewTabLabel(uuid){
     while(elements.length > 0){
         elements[0].classList.remove('activetab');
     } 
-    var ntab = document.createElement("span")
+    var ntab = document.createElement("div")
     ntab.id = "tab" + uuid
     ntab.innerHTML = " "
-    ntab.onclick  = showThisWebview.bind(ntab, uuid);
     ntab.classList = "activetab tab"
+    var ntabinner = document.createElement("span")
+    ntabinner.id = "inner" + uuid
+    ntabinner.innerHTML = "Initializing"
+    ntabinner.classList = "tabtext"
+    ntabinner.onclick  = showThisWebview.bind(ntabinner, uuid);
+    var tclose = document.createElement("span")
+    tclose.id = "close" + uuid
+    tclose.innerHTML = "close"
+    tclose.onclick  = closeTab.bind(tclose, uuid);
+    tclose.classList = "tabclosebtn"
+    ntab.appendChild(ntabinner)
+    ntab.appendChild(tclose)
     document.getElementById("tabregion").appendChild(ntab)
 }
 
-function generateActiveWbv(uuid){
+function generateActiveWbv(uuid,url){
     var wbv = document.createElement("WEBVIEW")
     wbv.classList = "activewbv"
-    wbv.src = homepage
+    if (typeof url === "undefined"){
+        wbv.src = homepage
+    } else{
+        wbv.src = url
+    }
     wbv.id = uuid
     document.getElementsByTagName("body")[0].appendChild(wbv)
+    document.getElementById(uuid).addEventListener('new-window', (e) => {
+        var protocol = require('url').parse(e.url).protocol
+            makeNewTab(e.url)
+    })
+  
+   
 }
 
 function uuidv4() {
@@ -31,14 +65,14 @@ function uuidv4() {
     });
 }
   
-function makeNewTab(){
+function makeNewTab(url){
     var uuid = uuidv4()
     var elements = document.getElementsByClassName('activewbv')
     while(elements.length > 0){
         elements[0].classList.remove('activewbv');
     }
     makeNewTabLabel(uuid)
-    generateActiveWbv(uuid)
+    generateActiveWbv(uuid,url)
 }
 
 // btn.ondblclick  = warnUser.bind(btn, userid,username);
@@ -72,3 +106,19 @@ urlbar.addEventListener("keyup", function(event) {
     }
 })
   
+function closeTab(uuid){
+    removeTag(uuid)
+    removeTag("tab" + uuid)
+    //temporary solution, aim to select last tab in tab list in the future.
+    document.getElementsByClassName("tab")[0].firstElementChild.click()
+}
+
+function loadingIndVisible(){
+    if(document.getElementsByClassName("activewbv")[0].isLoading()){
+        document.getElementById("loaderwrapper").style.opacity = "1"
+    } else{
+        document.getElementById("loaderwrapper").style.opacity = "0"
+    }
+}
+
+window.setInterval(loadingIndVisible,50)

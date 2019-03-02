@@ -10,6 +10,8 @@ function createWindow () {
        minHeight: 600,
        frame: false,
         backgroundColor: "#212121",
+        webviewTag: true,
+        nodeIntegration: true,
     })
 
   // and load the index.html of the app.
