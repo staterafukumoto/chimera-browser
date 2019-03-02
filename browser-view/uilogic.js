@@ -1,7 +1,7 @@
 function browserTheme(colour){
     //change the colour of the browser
     if (colour == "default"){
-        document.getElementById("titlebar-region").style.background = "#444"
+        document.getElementById("titlebar-region").style.background = "#252525"
     } else{
         document.getElementById("titlebar-region").style.background = colour
     }
@@ -43,6 +43,7 @@ function makeNewTabLabel(uuid){
 function generateActiveWbv(uuid,url){
     var wbv = document.createElement("WEBVIEW")
     wbv.classList = "activewbv"
+    wbv.useragent = useragent
     if (typeof url === "undefined"){
         wbv.src = homepage
     } else{
@@ -53,6 +54,14 @@ function generateActiveWbv(uuid,url){
     document.getElementById(uuid).addEventListener('new-window', (e) => {
         var protocol = require('url').parse(e.url).protocol
             makeNewTab(e.url)
+    })
+    document.getElementById(uuid).addEventListener('enter-html-full-screen', function(){
+        console.log("entering html-full-screen")
+        fullscreen("enter")
+    })
+    document.getElementById(uuid).addEventListener('exit-html-full-screen', function(){
+        console.log("exiting html-full-screen")
+        fullscreen("exit")
     })
   
    
@@ -122,3 +131,33 @@ function loadingIndVisible(){
 }
 
 window.setInterval(loadingIndVisible,50)
+
+function fullscreen(){
+    //figure out why electron won't fucking fullscreen later, but for now
+    //but honestly i just want sleep
+    electron.remote.getCurrentWindow().maximize()
+}
+
+function fullscreenExit(){
+    electron.remote.getCurrentWindow().unmaximize()
+}
+
+function closeThisTab(){
+    document.getElementsByClassName("activetab")[0].lastElementChild.click()
+}
+
+function showMenu(){
+    document.getElementById("menu").style.right = "2px"
+    document.getElementById("menu").style.opacity = "1"
+    document.getElementById("menu").style.transform = "scale(1)"
+    document.getElementById("mnubutton").style.color = "#adadad"
+    document.getElementById("mnubutton").onclick = hideMenu
+}
+
+function hideMenu(){
+    document.getElementById("menu").style.right = "-250px"
+    document.getElementById("menu").style.transform = "scale(0.9)"
+    document.getElementById("menu").style.opacity = "0"
+    document.getElementById("mnubutton").style.color = "white"
+    document.getElementById("mnubutton").onclick = showMenu
+}

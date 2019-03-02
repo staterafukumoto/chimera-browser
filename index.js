@@ -4,14 +4,15 @@ const { app, BrowserWindow } = require('electron')
 function createWindow () {
   // Create the browser window.
   let win = new BrowserWindow({
-       width: 1024, 
-       height: 600,
-       minWidth: 640,
-       minHeight: 600,
-       frame: false,
-        backgroundColor: "#212121",
-        webviewTag: true,
-        nodeIntegration: true,
+      width: 1024, 
+      height: 600,
+      minWidth: 640,
+      minHeight: 380,
+      frame: false,
+      backgroundColor: "#ffffff",
+      webviewTag: true,
+      nodeIntegration: true,
+      fullscreenable: true,
     })
 
   // and load the index.html of the app.

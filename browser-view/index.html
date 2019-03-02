@@ -41,8 +41,8 @@ Unmaximize/restore
 </div>
 
 <div id="endingbuttons">
-        <span id="backbutton" class="material-icons ubarnavbtn" onclick="">open_in_new</span>
-        <span id="backbutton" class="material-icons ubarnavbtn" onclick="">menu</span>
+        <!-- <span id="backbutton" class="material-icons ubarnavbtn" onclick="">open_in_new</span> -->
+        <span id="mnubutton" class="material-icons ubarnavbtn" onclick="showMenu()">menu</span>
 </div>
 
 <div id="loaderwrapper">
@@ -56,13 +56,26 @@ Unmaximize/restore
 
 </div> <!-- titlebar -->
 
+<div id="menu">
+    <span class="menuitem" onclick="closeThisTab(); hideMenu()">Close This Tab </span>
+    <span class="menuitem" onclick="refreshActive(); hideMenu()"> Reload </span>
+    <span class="menuitem" onclick="makeNewTab(); hideMenu()"> New Tab </span>
+    <span class="menuitem disabledmnuitem"> Forget That </span>
+    <span class="menuitem disabledmnuitem"> New Window </span>
+    <span class="menuitem disabledmnuitem"> Make this my Homepage </span>
+    <span class="menuitem disabledmnuitem"> Edit Useragent </span>
+    <span class="menuitem disabledmnuitem"> Toolbar Colour </span>
+    <span class="menuitem" onclick="document.getElementsByClassName('activewbv')[0].openDevTools(); hideMenu()"> Open Tab Inspector </span>
+</div>
 
-<script src="waywork.js"></script>
+
 <script src="declarations.js"></script>
+<script src="fluentdesign.js"></script>
 <script src="wmanager.js"></script>
 <script src="uilogic.js"></script>
 <script src="weblogic.js"></script>
 <script src="tabscroll.js"></script>
 <script src="webviewlaunch.js"></script>
+<script src="waywork.js"></script>
 </body>
 </html>
