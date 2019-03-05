@@ -13,9 +13,10 @@ function createWindow () {
       webviewTag: true,
       nodeIntegration: true,
       fullscreenable: true,
+      plugins: true,
     })
 
-  // and load the index.html of the app.
+  // and load the app ui of the app.
   win.loadFile('browser-view/index.html')
 }
 

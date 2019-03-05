@@ -1,2 +1,2 @@
-# Novus Web Browser
-> <b> You don't deserve to be sold. </b>
+# Chimera Web Browser
+> <b> Raise your banner. </b>

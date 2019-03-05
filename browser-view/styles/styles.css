@@ -110,8 +110,9 @@ body{
     left: 120px;
     right: 120px;
     width: calc(100% - 240px);
+    /* width: auto; */
     height: 26px;
-    top: 36px;
+    top: 35px;
     background: rgba(255, 255, 255, 0.1);
     outline: none;
     border: none;
@@ -123,6 +124,7 @@ body{
     user-select: none;
     transition: 0.2s all ease;
     /* transition: 0.2s border-bottom ease; */
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 #urlbar::selection{
@@ -132,11 +134,15 @@ body{
 
 #urlbar:focus{
     background: rgba(255, 255, 255, 0.2);
-    box-shadow: inset 0px -1px 0px 0px rgba(255,255,255,1);
+    /* box-shadow: inset 0px -1px 0px 0px rgba(255,255,255,1); */
 }
 
 #urlbar::placeholder{
     color: rgba(255,255,255,0.5);
+}
+
+#urlbar:hover{
+    border: 1px solid rgba(255,255,255,0.4);
 }
 
 #navbuttons{
@@ -198,6 +204,8 @@ webview{
     max-width: 240px;
     overflow: hidden;
     color: white;
+    animation: tabanimin 0.2s ease;
+    transform-origin: 0% 50% 0;
     /* box-shadow: inset -1px 1px 0px 0px rgba(255,255,255,0.1); */
     /* transition: 0.2s all ease; */
 }
@@ -331,4 +339,38 @@ webview{
 @keyframes menuslidein {
     0%   { right: -250px; opacity: 0 !important; transform: scale(0.95); }
     100% { right: 2px; opacity: 1 !important; transform: scale(1);}
-  }
+}
+
+#notsecure{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* color: #adadad; */
+    color: 	#A52A2A;
+    position: absolute;
+    left: 135px;
+    top: 40px;
+    margin-right: 10px;
+    border-right: 1px solid white;
+    height: 20px;
+    line-height: 20px;
+    animation: nsslidein 0.3s ease;
+    display: none;
+    cursor: default;
+}
+
+@keyframes nsslidein {
+    0%   { opacity: 0; }
+    100% { opacity: 1;}
+}
+
+@keyframes tabanimin {
+    0%   { transform: scale(0,1); opacity: 0;}
+    100% { transform: scale(1,1); opacity: 1;}
+}
+
+#mmx1{
+    display: inline;
+}
+
+#mmx2{
+    display: none;
+}

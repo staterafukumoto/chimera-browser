@@ -10,6 +10,10 @@ function refreshActive(){
     document.getElementsByClassName("activewbv")[0].reload()
 }
 
+function stopActive(){
+    document.getElementsByClassName("activewbv")[0].stop()
+}
+
 function fillURLBar(){
     if (urlbar === document.activeElement){
         //do nothing
@@ -23,8 +27,8 @@ function fillTabName(){
         // document.getElementsByClassName("activetab")[0].firstChild.innerHTML = document.getElementsByClassName("activewbv")[0].getTitle()
 
         if(document.getElementsByClassName("activewbv")[0].getTitle() != ""){
-            document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  document.getElementsByClassName("activewbv")[0].getTitle()
-            document.getElementsByClassName("activetab")[0].childNodes[1].title =  document.getElementsByClassName("activewbv")[0].getTitle()
+            document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  removeBrackets(document.getElementsByClassName("activewbv")[0].getTitle())
+            document.getElementsByClassName("activetab")[0].childNodes[1].title =  removeBrackets(document.getElementsByClassName("activewbv")[0].getTitle())
         } else{
             document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  "Initializing"
             document.getElementsByClassName("activetab")[0].childNodes[1].title =  "Initializing"
@@ -70,19 +74,32 @@ function get_hostname(url) {
 function parseURL(input){
     if(input.includes(".")){
         //case for loading url
-        if (input.startsWith("https://")){
+        if (input.startsWith("https://") || input.startsWith("http://")){
             goTo(input)
         } else if(input.startsWith("www.")){
             goTo("https://" + input)
         } else{
-            goTo ("https://www." + input)
+            goTo ("https://" + input)
         }
     } else{
         googleSearch(input)
     }
 }
 
+function getSecureStatus(){
+    if (getCurrentURL().startsWith("http://")){
+        return "INSECURE"
+    } else{
+        return "SECURE"
+    }
+}
+
 function googleSearch(input){
     var safe = encodeURI(input)
     goTo("https://www.google.com/search?q=" + safe)
+}
+
+function removeBrackets(input){
+    var s = input.replace(/[\{\}<>]/g, ""); //temporary solution, this should be changed later
+    return s;
 }

@@ -122,15 +122,19 @@ function closeTab(uuid){
     document.getElementsByClassName("tab")[0].firstElementChild.click()
 }
 
-function loadingIndVisible(){
+function loadingActivity(){
     if(document.getElementsByClassName("activewbv")[0].isLoading()){
         document.getElementById("loaderwrapper").style.opacity = "1"
+        document.getElementById("reloadbutton").innerHTML = "close"
+        document.getElementById("reloadbutton").onclick = stopActive
     } else{
         document.getElementById("loaderwrapper").style.opacity = "0"
+        document.getElementById("reloadbutton").innerHTML = "refresh"
+        document.getElementById("reloadbutton").onclick = refreshActive
     }
 }
 
-window.setInterval(loadingIndVisible,50)
+window.setInterval(loadingActivity,50)
 
 function fullscreen(){
     //figure out why electron won't fucking fullscreen later, but for now
@@ -161,3 +165,31 @@ function hideMenu(){
     document.getElementById("mnubutton").style.color = "white"
     document.getElementById("mnubutton").onclick = showMenu
 }
+
+function updateAppTitle(){
+    // updateAppTitle.innerHTML = "test"
+    var cpage = document.getElementsByClassName("activewbv")[0].getTitle()
+    try{
+        BrowserWindow.getFocusedWindow().setTitle(cpage + " - " + appname)
+    } catch(err){
+        //don't do a thing, because the web browser isn't focused and thus it cannot get the focused window to update the title
+        //there should be a way around this but i'd like to avoid declaring the focused window at startup to prevent bugs
+    }
+}
+
+function writeSecureStatusToUserInterface(){
+    if (getSecureStatus() == "INSECURE"){
+        urlbar.style.paddingLeft = "130px"
+        urlbar.style.width = "calc(100% - 350px)"
+        document.getElementById("notsecure").style.display = "inline"
+        document.getElementById("urlbar").title = insecure_string
+    } else{
+        urlbar.style.paddingLeft = "20px"
+        urlbar.style.width = "calc(100% - 240px)"
+        document.getElementById("notsecure").style.display = "none"
+        document.getElementById("urlbar").title = secure_string
+    }
+}
+
+window.setInterval(updateAppTitle, 60)
+window.setInterval(writeSecureStatusToUserInterface, 60)
