@@ -67,7 +67,8 @@ body{
 }
 
 #newtabbutton{
-    background: rgba(1, 1, 1, 0.15);
+    /* background: rgba(1, 1, 1, 0.15); */
+    background: rgba(1, 1, 1, 0.1);
     position: absolute;
     height: 32px;
     width: 25px;
@@ -84,7 +85,7 @@ body{
 }
 
 #newtabbutton:hover{
-    background: rgba(1, 1, 1, 0.01);
+    /* background: rgba(1, 1, 1, 0.15); */
 }
 
 #tabregion{
@@ -165,17 +166,17 @@ body{
 .ubarnavbtn{
     /* transition: 0.2s all ease; */
     -webkit-app-region: no-drag;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 2px;
     padding-right: 2px;
-    /* border: 1px solid rgba(255,255,255,0); */
+    border: 1px solid rgba(255,255,255,0);
 }
 
 .ubarnavbtn:hover{
     /* filter: opacity(0.6); */
     user-select: none;
-    /* border: 1px solid rgba(255,255,255,0.4); */
+    border: 1px solid rgba(255,255,255,0.4);
 }
 
 webview{
