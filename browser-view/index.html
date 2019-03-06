@@ -34,7 +34,7 @@ Unmaximize/restore
 <div id="newtabbutton" onclick="makeNewTab()"> + </div>
 
 <span id="notsecure"> &#9888; Not Secure &nbsp;</span>
-<input type="text" id="urlbar" placeholder="" onclick="this.select()">
+<input type="text" id="urlbar" placeholder="Search the Web or Type a URL" onclick="this.select()">
 
 <div id="navbuttons">
         <span id="backbutton" class="material-icons ubarnavbtn" onclick="goBackActive()">arrow_back</span>
@@ -64,6 +64,7 @@ Unmaximize/restore
     <span class="menuitem" onclick="refreshActive(); hideMenu()"> Reload </span>
     <span class="menuitem disabledmnuitem"> New Window </span>
     <span class="menuitem disabledmnuitem"> Make this my Homepage </span>
+    <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/settings/index.html'); hideMenu()"> Chimera Preferences </span>
     <span class="menuitem disabledmnuitem"> Find in Page </span>
     <span class="menuitem disabledmnuitem"> Forget </span>
     <span class="menuitem disabledmnuitem"> Edit Useragent </span>

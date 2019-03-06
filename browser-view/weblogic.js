@@ -19,7 +19,7 @@ function fillURLBar(){
         //do nothing
     } else{
         // urlbar.value = getCurrentURL()
-        if (getCurrentURL().startsWith("file://") && getCurrentURL().endsWith("homepage/index.html")){
+        if (getCurrentURL().startsWith("file://")){
             urlbar.value = ""
         } else{
             urlbar.value = getCurrentURL()
@@ -35,8 +35,8 @@ function fillTabName(){
             document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  removeBrackets(document.getElementsByClassName("activewbv")[0].getTitle())
             document.getElementsByClassName("activetab")[0].childNodes[1].title =  removeBrackets(document.getElementsByClassName("activewbv")[0].getTitle())
         } else{
-            document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  "Initializing"
-            document.getElementsByClassName("activetab")[0].childNodes[1].title =  "Initializing"
+            document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  "Home"
+            document.getElementsByClassName("activetab")[0].childNodes[1].title =  "Home"
         }
     }catch(err){
         // document.getElementsByClassName("activetab")[0].innerHTML = ""

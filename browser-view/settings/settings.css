@@ -1,0 +1,37 @@
+body{
+    background: #202020;
+}
+
+#headerbar{
+    position: absolute;
+    background: #343538;
+    /* border-top: 1px solid rgba(255,255,255,0.3); */
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: 48px;
+    width: auto;
+    justify-content: center;
+}
+
+.header{
+    height: 48px;
+    line-height: 48px;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    top: 0px;
+    display: inline-block;
+    cursor: default;
+    user-select: none;
+}
+
+.header:hover{
+    background: rgba(255,255,255,0.1)
+}
+
+.activeheader{
+    border-bottom: 1px solid rgba(255,255,255,0.7);
+}

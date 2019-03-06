@@ -2,28 +2,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title id="apptitle">Chimera Home</title>
+    <title id="apptitle">Preferences</title>
     <link href="../styles/gicons1.css" rel="stylesheet">
-    <link href="starterpage.css" rel="stylesheet">
+    <link href="settings.css" rel="stylesheet">
 </head>
 <body>
-<div id="MyClockDisplay" class="clock"></div>
-
-<input type="text" id="searchbar" placeholder="Search the Web" autofocus onclick="this.select()">
-<div id="charms">
-    <span id="" class="material-icons ubarnavbtn" onclick="">settings</span>
-    <span id="" class="material-icons ubarnavbtn" onclick="">format_paint</span>
-    <span id="" class="material-icons ubarnavbtn" onclick="">bookmarks</span>
-    <span id="" class="material-icons ubarnavbtn" onclick="">history</span>
-    <span id="" class="material-icons ubarnavbtn" onclick="">info</span>
-    <span id="" title="View the code on GitHub" class="material-icons ubarnavbtn" onclick="openRepo()">code</span>
+<div id="headerbar">
+<center>
+    <span class="header activeheader">Common</span>
+    <span class="header">Appearance</span>
+    <span class="header">Advanced</span>
+    <span class="header">Keyboard</span>
+</center>
 </div>
 
-<div id="identifier">
-    Chimera Browser<br>
-    <font color="#4286f4">&lt;/wayoutware&gt;</font>
-</div>
 
-<script src="clock.js"></script>
 <script src="logic.js"></script>
+<script src="fluent.js"></script>
 </body>

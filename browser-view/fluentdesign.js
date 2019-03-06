@@ -33,15 +33,15 @@ FluentRevealEffect.applyEffect("#urlbar", {
 // 	clickEffect: true
 // })
 
-FluentRevealEffect.applyEffect(".tab", {
-    clickEffect: true,
-    lightColor: "rgba(255,255,255,0.6)",
-    gradientSize: 80,
-    isContainer: true,
-    children: {
-        borderSelector: ".tabtext",
-        elementSelector: ".tab",
-        lightColor: "rgba(255,255,255,0.3)",
-        gradientSize: 150
-    }
-})
+// FluentRevealEffect.applyEffect(".activetab", {
+//     clickEffect: true,
+//     lightColor: "rgba(255,255,255,0.6)",
+//     gradientSize: 80,
+//     isContainer: true,
+//     children: {
+//         borderSelector: ".tabtext",
+//         elementSelector: ".tab",
+//         lightColor: "rgba(255,255,255,0.3)",
+//         gradientSize: 150
+//     }
+// })

@@ -27,7 +27,7 @@ function makeNewTabLabel(uuid){
     ntab.classList = "activetab tab"
     var ntabinner = document.createElement("span")
     ntabinner.id = "inner" + uuid
-    ntabinner.innerHTML = "Initializing"
+    ntabinner.innerHTML = "Home"
     ntabinner.classList = "tabtext"
     ntabinner.onclick  = showThisWebview.bind(ntabinner, uuid);
     var tclose = document.createElement("span")
@@ -116,6 +116,9 @@ urlbar.addEventListener("keyup", function(event) {
 })
   
 function closeTab(uuid){
+    if (getTabQuantity() == 1){ //this is the last straw. er i mean tab.
+        makeNewTab() //in the future, put code here with an option to close window or make new tab when there are no tabs
+    }
     removeTag(uuid)
     removeTag("tab" + uuid)
     //temporary solution, aim to select last tab in tab list in the future.
@@ -123,14 +126,18 @@ function closeTab(uuid){
 }
 
 function loadingActivity(){
-    if(document.getElementsByClassName("activewbv")[0].isLoading()){
-        document.getElementById("loaderwrapper").style.opacity = "1"
-        document.getElementById("reloadbutton").innerHTML = "close"
-        document.getElementById("reloadbutton").onclick = stopActive
-    } else{
-        document.getElementById("loaderwrapper").style.opacity = "0"
-        document.getElementById("reloadbutton").innerHTML = "refresh"
-        document.getElementById("reloadbutton").onclick = refreshActive
+    try{
+        if(document.getElementsByClassName("activewbv")[0].isLoading()){
+            document.getElementById("loaderwrapper").style.opacity = "1"
+            document.getElementById("reloadbutton").innerHTML = "close"
+            document.getElementById("reloadbutton").onclick = stopActive
+        } else{
+            document.getElementById("loaderwrapper").style.opacity = "0"
+            document.getElementById("reloadbutton").innerHTML = "refresh"
+            document.getElementById("reloadbutton").onclick = refreshActive
+        }
+    } catch{
+        
     }
 }
 
@@ -193,3 +200,7 @@ function writeSecureStatusToUserInterface(){
 
 window.setInterval(updateAppTitle, 60)
 window.setInterval(writeSecureStatusToUserInterface, 60)
+
+function getTabQuantity(){
+    return document.getElementById("tabregion").childNodes.length - 1
+}

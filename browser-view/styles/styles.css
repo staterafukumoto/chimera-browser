@@ -68,7 +68,7 @@ body{
 
 #newtabbutton{
     /* background: rgba(1, 1, 1, 0.15); */
-    background: rgba(1, 1, 1, 0.1);
+    background: rgba(1, 1, 1, 0.2);
     position: absolute;
     height: 32px;
     width: 25px;
@@ -89,7 +89,7 @@ body{
 }
 
 #tabregion{
-    background: rgba(1, 1, 1, 0.1);
+    background: rgba(1, 1, 1, 0.2);
     position: absolute;
     left: 0px; 
     right: 170px;
@@ -315,9 +315,9 @@ webview{
     color: white;
     line-height: 22px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 100%;
+    width: calc(100% - 8px);
     padding-left: 8px;
-    padding-right: 8px;
+    padding-right: 0px;
     padding-top: 10px;
     padding-bottom: 10px;
     display: block;
