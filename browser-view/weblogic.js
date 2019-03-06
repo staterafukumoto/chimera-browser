@@ -18,7 +18,12 @@ function fillURLBar(){
     if (urlbar === document.activeElement){
         //do nothing
     } else{
-        urlbar.value = getCurrentURL()
+        // urlbar.value = getCurrentURL()
+        if (getCurrentURL().startsWith("file://") && getCurrentURL().endsWith("homepage/index.html")){
+            urlbar.value = ""
+        } else{
+            urlbar.value = getCurrentURL()
+        }
     }
 }
 

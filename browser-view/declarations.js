@@ -1,6 +1,7 @@
 const { remote } = require("electron")
 // var homepage = "http://flask.pocoo.org/docs/1.0/testing/" //this tests secure standards
-var homepage = "https://www.google.com"
+var homepage = 'file://' + __dirname + '/homepage/index.html';
+// var homepage = "https://www.google.com"
 var urlbar = document.getElementById("urlbar");
 var electron = require('electron');
 var useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) chimera-browser/1.0.0 Chrome/69.0.3497.106 Safari/537.36"
