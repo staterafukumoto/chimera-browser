@@ -1,5 +1,4 @@
 const searchbar = document.getElementById("searchbar")
-let twentyFourHour = true
 
 function googleSearch(input){
     var safe = encodeURI(input)
@@ -22,8 +21,4 @@ searchbar.addEventListener("keyup", function(event) {
 
 function openRepo(){
     window.location.href = "https://github.com/wayoutware/chimera-browser"
-}
-
-function openSettings(){
-    window.location.href = "../settings/index.html"
 }

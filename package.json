@@ -7,9 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "rebuild": "clear && electron-rebuild",
-    "buildwin": "electron-packager . Chimera --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds ",
+    "buildwin": "electron-packager . Chimera --overwrite --asar=true --platform=win32 --arch=x64 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds ",
+    "buildwin32": "electron-packager . Chimera --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds ",
     "buildlinux": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds --version-string.ProductName=\"Chimera\"",
-    "winsetup": "electron-packager . app --platform=win32 --arch=x64 --out=release-builds"
+    "buildlinux32": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=ia32 --icon=assets/icons/png/icon.png --prune=true --out=release-builds --version-string.ProductName=\"Chimera\"",
+    "buildlinuxarm": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=arm64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds --version-string.ProductName=\"Chimera\"",
+    "buildlinuxarm32": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=armv7l --icon=assets/icons/png/icon.png --prune=true --out=release-builds --version-string.ProductName=\"Chimera\""
   },
   "repository": {
     "type": "git",
@@ -25,12 +28,12 @@
   },
   "homepage": "https://github.com/wayoutware/novus-browser#readme",
   "dependencies": {
-    "electron": "^4.0.6",
     "electron-prompt": "^1.3.0",
     "electron-rebuild": "^1.8.4",
     "fluent-reveal-effect": "^1.0.0"
   },
   "devDependencies": {
+    "electron": "^4.0.8",
     "electron-packager": "^13.1.1"
   }
 }

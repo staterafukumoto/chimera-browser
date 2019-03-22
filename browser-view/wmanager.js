@@ -73,3 +73,26 @@ function browserThemeSelect(){ //this is a temporary solution, a built in ui wil
       })
       .catch(console.error);
 }
+
+function otherLayout(){ //a layout more... mac like perhaps? ( ͡° ͜ʖ ͡°)
+     document.getElementsByClassName("ui-titlecontrols")[0].style.display = "none"
+     document.getElementById("tabregion").style.right = "0px"
+     document.getElementById("tabregion").style.paddingLeft = "80px"
+     document.getElementById("newtabbutton").style.right = "0px"
+     document.getElementById("urlbar").style.borderRadius = "6px"
+     document.getElementById("urlbar").style.borderColor = "rgba(0,0,0,0)"
+}
+
+function find_csa(arr, subarr, from_index) {
+     var i = from_index >>> 0,
+         sl = subarr.length,
+         l = arr.length + 1 - sl;
+ 
+     loop: for (; i<l; i++) {
+         for (var j=0; j<sl; j++)
+             if (arr[i+j] !== subarr[j])
+                 continue loop;
+         return i;
+     }
+     return -1;
+ }

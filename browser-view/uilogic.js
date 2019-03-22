@@ -10,9 +10,10 @@ function browserTheme(colour){
 function webViewNightMode(arg){
     //true or false
     if (arg == true){
-        document.getElementsByClassName("activewbv")[0].style.filter = "invert(1)"
+        // document.getElementsByClassName("activewbv")[0].style.filter = "invert(1)"
+        document.getElementById("webwrapper").style.filter = "invert(1)"
     } else{
-        document.getElementsByClassName("activewbv")[0].style.filter = "invert(0)"
+        document.getElementById("webwrapper").style.filter = "invert(0)"
     }
 }
 
@@ -50,18 +51,25 @@ function generateActiveWbv(uuid,url){
         wbv.src = url
     }
     wbv.id = uuid
-    document.getElementsByTagName("body")[0].appendChild(wbv)
-    document.getElementById(uuid).addEventListener('new-window', (e) => {
+    document.getElementById("webwrapper").appendChild(wbv)
+    document.getElementById(uuid).addEventListener('new-window', (e) => { //get _blank targets and open them in new tabs, you know, like a browser
         var protocol = require('url').parse(e.url).protocol
             makeNewTab(e.url)
     })
-    document.getElementById(uuid).addEventListener('enter-html-full-screen', function(){
+    document.getElementById(uuid).addEventListener('enter-html-full-screen', function(){ //broken
         console.log("entering html-full-screen")
         fullscreen("enter")
     })
-    document.getElementById(uuid).addEventListener('exit-html-full-screen', function(){
+    document.getElementById(uuid).addEventListener('exit-html-full-screen', function(){ //also broken
         console.log("exiting html-full-screen")
         fullscreen("exit")
+    })
+    document.getElementById(uuid).addEventListener('did-finish-load', function(){ //push the webview's data to the history object
+        appendToHistory(document.getElementById(uuid).getTitle(), document.getElementById(uuid).getURL())
+    })
+    document.getElementById(uuid).addEventListener('page-title-updated', function(){ //push the webview's data to the history object
+        // appendToHistory(document.getElementById(uuid).getTitle(), document.getElementById(uuid).getURL())
+        setTabTitle(uuid, document.getElementById(uuid).getTitle())
     })
   
    
@@ -158,17 +166,13 @@ function closeThisTab(){
 }
 
 function showMenu(){
-    document.getElementById("menu").style.right = "2px"
-    document.getElementById("menu").style.opacity = "1"
-    document.getElementById("menu").style.transform = "scale(1)"
+    document.getElementById("menu").style.top = "72px"
     document.getElementById("mnubutton").style.color = "#adadad"
     document.getElementById("mnubutton").onclick = hideMenu
 }
 
 function hideMenu(){
-    document.getElementById("menu").style.right = "-250px"
-    document.getElementById("menu").style.transform = "scale(0.9)"
-    document.getElementById("menu").style.opacity = "0"
+    document.getElementById("menu").style.top = "-600px"
     document.getElementById("mnubutton").style.color = "white"
     document.getElementById("mnubutton").onclick = showMenu
 }
@@ -204,3 +208,39 @@ window.setInterval(writeSecureStatusToUserInterface, 60)
 function getTabQuantity(){
     return document.getElementById("tabregion").childNodes.length - 1
 }
+
+
+function showPanel(arg){
+    document.getElementById("webwrapper").style.right = "380px"
+    document.getElementById("panelwrapper").style.right = "0px"
+    // document.getElementById("panelframe").src = arg
+    window.panelIsOut = true
+}
+
+function hidePanel(){
+    document.getElementById("webwrapper").style.right = "0px"
+    document.getElementById("panelwrapper").style.right = "-381px"
+    window.panelIsOut = false
+}
+
+function setPanelTitle(){
+    document.getElementById("panellabel").innerHTML = document.getElementById("panelframe").contentDocument.title
+}
+
+window.setInterval(setPanelTitle,200)
+
+function isFocused(elementID){
+    return document.activeElement === document.getElementById(elementID)
+}
+
+function urlBarSelect(){
+
+}
+
+function setTabTitle(uuid,title){
+    document.getElementById('tab' + uuid).childNodes[1].innerHTML = title
+    document.getElementById('tab' + uuid).title = title
+    // document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  "Home"
+}
+
+

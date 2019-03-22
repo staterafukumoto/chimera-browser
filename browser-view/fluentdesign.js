@@ -28,6 +28,18 @@ FluentRevealEffect.applyEffect("#urlbar", {
     // clickEffect: true
 })
 
+FluentRevealEffect.applyEffect(".bookmarkinput", {
+	lightColor: "rgba(255,255,255,0.2)",
+    gradientSize: 180,
+    // clickEffect: true
+})
+
+FluentRevealEffect.applyEffect(".bookmarkbutton", {
+	lightColor: "rgba(255,255,255,0.2)",
+    gradientSize: 60,
+    // clickEffect: true
+})
+
 
 // FluentRevealEffect.applyEffect(".tab", {
 // 	clickEffect: true

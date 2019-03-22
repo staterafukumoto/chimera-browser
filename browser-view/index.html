@@ -7,25 +7,20 @@
     <link href="styles/gicons1.css" rel="stylesheet">
 </head>
 <body>
-<!--
-Unmaximize/restore
-<svg viewBox="0 0 10.2 10.1"><path d="M2.1,0v2H0v8.1h8.2v-2h2V0H2.1z M7.2,9.2H1.1V3h6.1V9.2z M9.2,7.1h-1V2H3.1V1h6.1V7.1z" /></svg>
--->
-
-<div id="titlebar-region">
-
-<div class="ui-titlebar">
-<!--<div class="ui-titleicon"></div>-->
-<div class="ui-titletext"></div>
-<div class="ui-titlecontrols">
+    
+    <div id="titlebar-region">
+        
+        <div class="ui-titlebar">
+            <div class="ui-titletext"></div>
+            <div class="ui-titlecontrols">
 <button class="ui-btn minimize" onclick="minimizeWindow()">
-    <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1" /></svg>
-</button><button id="maximbutton" class="ui-btn maximize" onclick="maximizeWindow()">
-    <svg id="mmx1" viewBox="0 0 10 10"><path d="M0,0v10h10V0H0z M9,9H1V1h8V9z" /></svg>
-    <svg id="mmx2" viewBox="0 0 10.2 10.1"><path d="M2.1,0v2H0v8.1h8.2v-2h2V0H2.1z M7.2,9.2H1.1V3h6.1V9.2z M9.2,7.1h-1V2H3.1V1h6.1V7.1z" /></svg>
+        <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1" /></svg>
+    </button><button id="maximbutton" class="ui-btn maximize" onclick="maximizeWindow()">
+            <svg id="mmx1" viewBox="0 0 10 10"><path d="M0,0v10h10V0H0z M9,9H1V1h8V9z" /></svg>
+            <svg id="mmx2" viewBox="0 0 10.2 10.1"><path d="M2.1,0v2H0v8.1h8.2v-2h2V0H2.1z M7.2,9.2H1.1V3h6.1V9.2z M9.2,7.1h-1V2H3.1V1h6.1V7.1z" /></svg>
 </button><button class="ui-btn close" onclick="quitApp()">
-    <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" /></svg>
-</button>
+        <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" /></svg>
+    </button>
 </div>
 </div>
 <div id="tabregion">
@@ -34,17 +29,17 @@ Unmaximize/restore
 <div id="newtabbutton" onclick="makeNewTab()"> + </div>
 
 <span id="notsecure"> &#9888; Not Secure &nbsp;</span>
-<input type="text" id="urlbar" placeholder="Search the Web or Type a URL" onclick="this.select()">
+<input type="text" id="urlbar" placeholder="Search the Web or Type a URL" onclick="urlBarSelect()">
 
 <div id="navbuttons">
-        <span id="backbutton" class="material-icons ubarnavbtn" onclick="goBackActive()">arrow_back</span>
-        <span id="fwdbutton" class="material-icons ubarnavbtn" onclick="goFwdActive()">arrow_forward</span>
-        <span id="reloadbutton" class="material-icons ubarnavbtn" onclick="refreshActive()">refresh</span>
+    <span id="backbutton" class="material-icons ubarnavbtn" onclick="goBackActive()">arrow_back</span>
+    <span id="fwdbutton" class="material-icons ubarnavbtn" onclick="goFwdActive()">arrow_forward</span>
+    <span id="reloadbutton" class="material-icons ubarnavbtn" onclick="refreshActive()">refresh</span>
 </div>
 
 <div id="endingbuttons">
-        <span id="backbutton" class="material-icons ubarnavbtn" onclick="goTo(homepage)">home</span>
-        <span id="mnubutton" class="material-icons ubarnavbtn" onclick="showMenu()">menu</span>
+    <span id="backbutton" class="material-icons ubarnavbtn" onclick="goTo(homepage)">home</span>
+    <span id="mnubutton" class="material-icons ubarnavbtn" onclick="showMenu()">menu</span>
 </div>
 
 <div id="loaderwrapper">
@@ -60,28 +55,51 @@ Unmaximize/restore
 
 
 <div id="menu">
-    <span class="menuitem" onclick="closeThisTab(); hideMenu()">Close This Tab </span>
+    <span class="menuitem" onload="this.innerHTML = languagename" onclick="makeNewTab(); hideMenu()"> New Tab </span>
     <span class="menuitem" onclick="refreshActive(); hideMenu()"> Reload </span>
     <span class="menuitem disabledmnuitem"> New Window </span>
-    <span class="menuitem disabledmnuitem"> Make this my Homepage </span>
+    <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/bookmarks/index.html'); hideMenu()"> Library </span>
+    <span class="menuitem" onclick="showBookmarkApplet(); hideMenu()"> New Bookmark </span>
     <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/settings/index.html'); hideMenu()"> Chimera Preferences </span>
     <span class="menuitem disabledmnuitem"> Find in Page </span>
     <span class="menuitem disabledmnuitem"> Forget </span>
-    <span class="menuitem disabledmnuitem"> Edit Useragent </span>
     <span class="menuitem" onclick="browserThemeSelect(); hideMenu()"> Toolbar Colour </span>
     <span class="menuitem" onclick="document.getElementsByClassName('activewbv')[0].openDevTools(); hideMenu()"> Open Tab Inspector </span>
     <span class="menuitem" onclick="BrowserWindow.getFocusedWindow().openDevTools(); hideMenu()"> Open App Inspector </span>
-    <span class="menuitem" onclick="BrowserWindow.getFocusedWindow().reload();"> Restart </span>
 </div>
 
-
-<script src="declarations.js"></script>
-<script src="fluentdesign.js"></script>
-<script src="wmanager.js"></script>
-<script src="uilogic.js"></script>
-<script src="weblogic.js"></script>
-<script src="tabscroll.js"></script>
-<script src="webviewlaunch.js"></script>
-<script src="waywork.js"></script>
+<div id="panelwrapper">
+    <div id="panelclose" class="" onclick="hidePanel()">
+            <span class="material-icons">arrow_forward_ios</span>
+            <div id="panellabel"> Settings </div>
+        </div>
+        <iframe id="panelframe" src="" frameborder="0"></iframe>
+    </div>
+    
+    <div id="bookmarkapplet">
+        <span class="material-icons bkmrkicons">bookmark</span> <span class="bkmrkheader"> New Bookmark </span>
+        <br>
+        <input type="text" class="bookmarkinput" id="bookmarkname" placeholder="Name" onclick="this.select()">
+        <br>
+        <input type="text" class="bookmarkinput" id="bookmarkurl" placeholder="URL" onclick="this.select()">
+        <div id="bkmrkbuttonwrapper">
+            <span class="bookmarkbutton" onclick="hideBookmarkApplet()">Cancel</span>
+            <span class="bookmarkbutton">Confirm</span>
+        </div>
+    </div>
+    
+    <div id="webwrapper"></div>
+    
+    <script src="declarations.js"></script>
+    <script src="fluentdesign.js"></script>
+    <script src="wmanager.js"></script>
+    <script src="uilogic.js"></script>
+    <script src="weblogic.js"></script>
+    <script src="tabscroll.js"></script>
+    <script src="webviewlaunch.js"></script>
+    <script src="waywork.js"></script>
+    <script src="history.js"></script>
+    <script src="bookmark.js"></script>
+    <script src="../lang.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 const { app, BrowserWindow } = require('electron')
-// import 'material-design-icons/iconfont/material-icons.css'
 
 function createWindow () {
   // Create the browser window.
@@ -20,4 +19,13 @@ function createWindow () {
   win.loadFile('browser-view/index.html')
 }
 
+// -- this will apply the menu whenever i build it
+// let menu = Menu.buildFromTemplate(template);
+// Menu.setApplicationMenu(menu);
+
 app.on('ready', createWindow)
+
+app.on('window-all-closed', () =>
+{
+  app.quit()
+})

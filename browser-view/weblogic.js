@@ -27,25 +27,25 @@ function fillURLBar(){
     }
 }
 
-function fillTabName(){
-    try{
-        // document.getElementsByClassName("activetab")[0].firstChild.innerHTML = document.getElementsByClassName("activewbv")[0].getTitle()
+// function fillTabName(){
+//     try{
+//         // document.getElementsByClassName("activetab")[0].firstChild.innerHTML = document.getElementsByClassName("activewbv")[0].getTitle()
 
-        if(document.getElementsByClassName("activewbv")[0].getTitle() != ""){
-            document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  removeBrackets(document.getElementsByClassName("activewbv")[0].getTitle())
-            document.getElementsByClassName("activetab")[0].childNodes[1].title =  removeBrackets(document.getElementsByClassName("activewbv")[0].getTitle())
-        } else{
-            document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  "Home"
-            document.getElementsByClassName("activetab")[0].childNodes[1].title =  "Home"
-        }
-    }catch(err){
-        // document.getElementsByClassName("activetab")[0].innerHTML = ""
-        // document.getElementsByClassName("activetab")[0].title = ""
-    }
-}
+//         if(document.getElementsByClassName("activewbv")[0].getTitle() != ""){
+//             document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  removeBrackets(document.getElementsByClassName("activewbv")[0].getTitle())
+//             document.getElementsByClassName("activetab")[0].childNodes[1].title =  removeBrackets(document.getElementsByClassName("activewbv")[0].getTitle())
+//         } else{
+//             document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  "Home"
+//             document.getElementsByClassName("activetab")[0].childNodes[1].title =  "Home"
+//         }
+//     }catch(err){
+//         // document.getElementsByClassName("activetab")[0].innerHTML = ""
+//         // document.getElementsByClassName("activetab")[0].title = ""
+//     }
+// }
 
+// window.setInterval(fillTabName,60)
 window.setInterval(fillURLBar,60)
-window.setInterval(fillTabName,60)
 
 function setWebviewLocation(){
     var input = urlbar.value

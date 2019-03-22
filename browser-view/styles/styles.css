@@ -13,6 +13,7 @@ body{
     height: 68px;
     background: #343538;
     cursor: default;
+    z-index: 30;
 }
 
 .ui-titlebar {
@@ -91,7 +92,8 @@ body{
 #tabregion{
     background: rgba(1, 1, 1, 0.2);
     position: absolute;
-    left: 0px; 
+    left: 0px;
+    padding-left: 20px;
     right: 170px;
     top: 0px;
     height: 32px;
@@ -181,6 +183,16 @@ body{
 
 webview{
     display: none;
+    transition: 0.3s all ease;
+}
+
+#webwrapper{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 68px;
+    transition: 0.3s all ease;
 }
 
 .activewbv{
@@ -189,7 +201,7 @@ webview{
     left: 0px;
     right: 0px;
     bottom: 0px;
-    top: 68px;
+    top: 0px;
 }
 
 .tab{
@@ -202,17 +214,17 @@ webview{
     height: 32px;
     background: rgba(255,255,255,0);
     width: auto;
-    max-width: 240px;
+    max-width: 280px;
     overflow: hidden;
     color: white;
     animation: tabanimin 0.2s ease;
     transform-origin: 0% 50% 0;
     /* box-shadow: inset -1px 1px 0px 0px rgba(255,255,255,0.1); */
-    /* transition: 0.2s all ease; */
+    transition: 0.2s background ease;
 }
 
 .tab:hover{
-    /* background: rgba(255,255,255,0.05); */
+    background: rgba(255,255,255,0.05);
 }
 
 .tabclosebtn{
@@ -298,17 +310,17 @@ webview{
 
 #menu{
     position: absolute;
-    right: -250px;
-    top: 70px;
+    right: 2px;
+    top: -600px;
     background: #212121;
     border: 1px solid rgba(255,255,255,0.5);
     z-index: 20;
     min-width: 220px;
-    transition: 0.2s all cubic-bezier(.27,.62,.59,1.01);
+    transition: 0.3s all cubic-bezier(.27,.62,.59,1.01);
     /* display: none; */
-    transform: scale(0.9);
+    transform: scale(1);
     transform-origin: 50% 0%;
-    opacity: 0;
+    opacity: 1;
 }
 
 .menuitem{
@@ -344,13 +356,13 @@ webview{
 
 #notsecure{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* color: #adadad; */
-    color: 	#A52A2A;
+    color: #adadad;
+    /* color: 	#A52A2A; */
     position: absolute;
     left: 135px;
     top: 40px;
     margin-right: 10px;
-    border-right: 1px solid white;
+    border-right: 1px solid #adadad;
     height: 20px;
     line-height: 20px;
     animation: nsslidein 0.3s ease;
@@ -374,4 +386,138 @@ webview{
 
 #mmx2{
     display: none;
+}
+
+#panelwrapper{
+    position: absolute;
+    right: -381px;
+    /* right: 0px; */
+    bottom: 0px;
+    top: 68px;
+    z-index: 20;
+    width: 380px;
+    background: black;
+    border-left: 1px solid rgba(255,255,255,0.4);
+    transition: 0.3s all ease;
+}
+
+#panelframe{
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 26px);
+    top: 26px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+#panelclose{
+    color: white;
+    top: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    height: 25px;
+    line-height: 25px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.2)
+}
+
+#panellabel{
+    display: inline;
+    position: absolute;
+    left: 40px;
+    top: 0px;
+    height: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 25px;
+}
+
+#bookmarkapplet{
+    position: absolute;
+    background: #151515;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: -175px;
+    left: 30%;
+    right: 30%;
+    height: 175px;
+    z-index: 20;
+    min-width: 320px;
+    transition: 0.3s top ease;
+}
+
+.bkmrkheader{
+    color: white;
+    margin-left: 28px;
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 26px !important;
+}
+
+.bkmrkicons{
+    color: white;
+    margin-top: 7px;
+    margin-left: 4px;
+    position: absolute;
+    font-family: 24px;
+}
+
+.bookmarkinput{
+    display: block;
+    position: relative;
+    width: 60%;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-size: 16px;
+    left: 20%;
+    right: 20%;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    border: none;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.bookmarkinput::selection{
+    background: rgba(255,255,255,0.6);
+    color: black;
+}
+
+.bookmarkinput:focus{
+    background: rgba(255, 255, 255, 0.2);
+    /* box-shadow: inset 0px -1px 0px 0px rgba(255,255,255,1); */
+}
+
+.bookmarkinput::placeholder{
+    color: rgba(255,255,255,0.5);
+}
+
+.bookmarkinput:hover{
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+#bkmrkbuttonwrapper{
+    /* background: red; */
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    height: 32px;
+    width: 160px;
+}
+
+.bookmarkbutton{
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    height: 100%;
+    line-height: 32px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.bookmarkbutton:hover{
+    border: 1px solid rgba(255,255,255,0.4);
 }
