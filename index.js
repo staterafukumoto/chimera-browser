@@ -85,7 +85,7 @@ function createWindow() {
           // {role: 'toggledevtools'},
           {
             label: 'Developer Tools',
-            click () {  },
+            click () {} ,
             accelerator: 'CmdOrCtrl+Shift+I',
           },
           {type: 'separator'},
@@ -130,11 +130,16 @@ function createWindow() {
 
   // and load the app ui of the app.
   win.loadFile('browser-view/index.html')
+    if (process.platform === "win32"){
+      win.on('app-command', function(e, cmd) { //listen for back button
+        if (cmd === 'browser-backward') {
+          win.webContents.send('go-back')
+        } else if (cmd === 'browser-forward') {
+          win.webContents.send('go-fwd')
+        }
+      });
+    }
 }
-
-// -- this will apply the menu whenever i build it
-// let menu = Menu.buildFromTemplate(template);
-// Menu.setApplicationMenu(menu);
 
 app.on('ready', createWindow)
 

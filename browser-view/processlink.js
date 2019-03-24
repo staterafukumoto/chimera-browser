@@ -31,3 +31,11 @@ ipc.on('settings', function(arg){
 ipc.on('library', function(arg){
     makeNewTab('file://' + __dirname + '/bookmarks/index.html')
 })
+
+ipc.on('go-back', function(arg){
+    goBackActive()
+})
+
+ipc.on('go-fwd', function(arg){
+    goFwdActive()
+})

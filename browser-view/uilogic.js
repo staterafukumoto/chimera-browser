@@ -127,7 +127,8 @@ urlbar.addEventListener("keyup", function(event) {
   
 function closeTab(uuid){
     if (getTabQuantity() == 1){ //this is the last straw. er i mean tab.
-        makeNewTab() //in the future, put code here with an option to close window or make new tab when there are no tabs
+        // makeNewTab() //in the future, put code here with an option to close window or make new tab when there are no tabs
+        window.close()
     }
     removeTag(uuid)
     removeTag("tab" + uuid)
@@ -264,3 +265,22 @@ function getCurrentTab(){
         return document.getElementById("tabregion").childNodes[input].classList.contains("activetab")
     }
 }
+
+function buttonDisabler(){
+    //disable back button
+    if (document.getElementsByClassName("activewbv")[0].canGoBack()){
+        // console.log('hello')
+        document.getElementById("backbutton").classList.remove("ubardisabled")
+    } else{
+        document.getElementById("backbutton").classList.add("ubardisabled")
+    }
+    //disable forward button 
+    if (document.getElementsByClassName("activewbv")[0].canGoForward()){
+        // console.log('hello')
+        document.getElementById("fwdbutton").classList.remove("ubardisabled")
+    } else{
+        document.getElementById("fwdbutton").classList.add("ubardisabled")
+    }
+}
+
+window.setInterval(buttonDisabler,60)
