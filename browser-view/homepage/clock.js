@@ -21,8 +21,8 @@ function showTime(){
     s = (s < 10) ? "0" + s : s;
     
     var time = h + ":" + m + session;
-    document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay").textContent = time;
+    document.getElementById("elclock").innerText = time;
+    document.getElementById("elclock").textContent = time;
     
     setTimeout(showTime, 1000);
     

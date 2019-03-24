@@ -2,6 +2,16 @@ body{
     background: #202020;
 }
 
+#allwrap{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    animation: animin 0.3s ease;
+    z-index: 20;
+}
+
 .clock {
     position: absolute;
     top: 60px;
@@ -68,11 +78,11 @@ body{
 #identifier{
     color: white;
     /* background: red; */
-    background: linear-gradient(rgba(0,0,0,0), #202020, #202020);
+    /* background: linear-gradient(rgba(0,0,0,0), #202020, #202020); */
     position: absolute;
     right: 0px;
     bottom: 0px;
-    width: 256px;
+    width: 278px;
     padding-bottom: 16px;
     padding-right: 16px;
     padding-top: 64px;
@@ -102,4 +112,44 @@ body{
     position: absolute;
     right: 4px;
     bottom: 4px;
+}
+
+#background{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    opacity: 0.3;
+    background: url('https://picsum.photos/g/1920/1080/?random');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#background-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.0;
+    transform: scale(1.05);
+    transform-origin: 50% 50%;
+    transition: 0.4s all ease;
+    object-fit: cover;
+}
+
+#bgwrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    z-index: -10;
+    pointer-events: none;
+}
+
+@keyframes animin {
+    0%   { transform: scale(1,0.95); opacity: 0;}
+    100% { transform: scale(1,1); opacity: 1;}
 }

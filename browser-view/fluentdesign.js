@@ -44,16 +44,3 @@ FluentRevealEffect.applyEffect(".bookmarkbutton", {
 // FluentRevealEffect.applyEffect(".tab", {
 // 	clickEffect: true
 // })
-
-// FluentRevealEffect.applyEffect(".activetab", {
-//     clickEffect: true,
-//     lightColor: "rgba(255,255,255,0.6)",
-//     gradientSize: 80,
-//     isContainer: true,
-//     children: {
-//         borderSelector: ".tabtext",
-//         elementSelector: ".tab",
-//         lightColor: "rgba(255,255,255,0.3)",
-//         gradientSize: 150
-//     }
-// })

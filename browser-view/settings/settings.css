@@ -64,7 +64,7 @@ body{
   display: inline-block;
   position: absolute;
   right: 25px;
-  border-radius: 24px;
+  border-radius: 0px;
   background: white;
   box-shadow:inset -9px 0px 0px 0px #adadad;
   transition: 0.2s all ease;
@@ -80,7 +80,7 @@ body{
   display: inline-block;
   position: absolute;
   right: 25px;
-  border-radius: 24px;
+  border-radius: 0px;
   background: white;
   /*box-shadow: inset 9px 0px 0px 0px #0cbaff;*/
   box-shadow: inset 9px 0px 0px 0px rgb(76,217,100);
@@ -98,7 +98,7 @@ body{
   display: inline-block;
   position: absolute;
   right: 25px;
-  border-radius: 24px;
+  border-radius: 0px;
   /* background: linear-gradient(#4b5066, #383c4c); */
   /* background: linear-gradient(#ededed,#adadad); */
   background: rgb(76,217,100);

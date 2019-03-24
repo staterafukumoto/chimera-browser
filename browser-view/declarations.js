@@ -25,3 +25,4 @@ var vendor ="WAYOUTWARE"
 var urlsafevendor = vendor
 var secure_string = "This page is using HTTPS, meaning you have a secure connection to the site."
 var insecure_string = "This page is using HTTP and not HTTPS, and therefore isn't secure. Be careful inputting passwords or identifying information on this site."
+var local_string = "This page is rendered inside of Chimera"

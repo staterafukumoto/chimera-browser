@@ -2,30 +2,35 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title id="apptitle">Home</title>
+    <title id="apptitle">New Tab</title>
     <link href="../styles/gicons1.css" rel="stylesheet">
     <link href="starterpage.css" rel="stylesheet">
 </head>
 <body>
-<div id="MyClockDisplay" class="clock"></div>
-
-<input type="text" id="searchbar" placeholder="Search the Web" autofocus onclick="this.select()">
-<div id="charms">
-    <span id="" class="material-icons ubarnavbtn" onclick="openSettings()">settings</span>
-    <span id="" class="material-icons ubarnavbtn" onclick="">format_paint</span>
-    <span id="" class="material-icons ubarnavbtn" onclick="">bookmarks</span>
-    <span id="" class="material-icons ubarnavbtn" onclick="">history</span>
-    <span id="" class="material-icons ubarnavbtn" onclick="">info</span>
-    <span id="" title="View the code on GitHub" class="material-icons ubarnavbtn" onclick="openRepo()">code</span>
+<div id="allwrap">
+    <div id="elclock" class="clock"></div>
+    
+    <input type="text" id="searchbar" placeholder="Search the Web" autofocus onclick="this.select()">
+    <div id="charms">
+        <span id="" class="material-icons ubarnavbtn" onclick="openSettings()">settings</span>
+        <span id="" class="material-icons ubarnavbtn" onclick="openLibrary()">local_library</span>
+        <span id="" class="material-icons ubarnavbtn" onclick="">info</span>
+        <span id="" title="View the code on GitHub" class="material-icons ubarnavbtn" onclick="openRepo()">code</span>
+    </div>
+    
+    <div id="identifier">
+        Chimera Browser<br>
+        <font color="#adadad">Photos Provided by Lorum Picsum</font> &nbsp; | &nbsp; <font color="#ededed">wayoutware</font> 
+    </div>
+    
+    <img src="../img/icon.png" id="branding" draggable="false">
+    
 </div>
-
-<div id="identifier">
-    Chimera<br>
-    <font color="#adadad">wayoutware</font>
-</div>
-
-<img src="../img/icon.png" id="branding" draggable="false">
-
-<script src="logic.js"></script>
-<script src="clock.js"></script>
+    <!-- <div id="background"> -->
+        <div id="bgwrapper">
+            <img id="background-img" draggable="false" onload="imgAnimate()" src="https://picsum.photos/g/1600/900/?random">
+        </div>
+        
+        <script src="logic.js"></script>
+        <script src="clock.js"></script>
 </body>

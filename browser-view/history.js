@@ -4,7 +4,7 @@ function appendToHistory(pagename, pageurl){
             //don't keep history
         } else{
             var time = Date.now()
-            window.historyObject.push([time, pagename,pageurl])
+            window.historyObject.unshift([time, pagename,pageurl])
         }
     }
     historySave()

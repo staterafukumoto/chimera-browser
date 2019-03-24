@@ -94,7 +94,9 @@ function parseURL(input){
 function getSecureStatus(){
     if (getCurrentURL().startsWith("http://")){
         return "INSECURE"
-    } else{
+    } else if(getCurrentURL().startsWith("file://")){
+        return "LOCAL"
+    } else if(getCurrentURL().startsWith("https://")){
         return "SECURE"
     }
 }

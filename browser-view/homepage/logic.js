@@ -27,3 +27,12 @@ function openRepo(){
 function openSettings(){
     window.location.href = "../settings/index.html"
 }
+
+function openLibrary(){
+    window.location.href = "../settings/index.html"
+}
+
+function imgAnimate(){
+    document.getElementById("background-img").style.opacity = "0.3"
+    document.getElementById("background-img").style.transform = "scale(1)"
+}

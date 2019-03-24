@@ -28,7 +28,7 @@ function makeNewTabLabel(uuid){
     ntab.classList = "activetab tab"
     var ntabinner = document.createElement("span")
     ntabinner.id = "inner" + uuid
-    ntabinner.innerHTML = "Home"
+    ntabinner.innerHTML = "New Tab"
     ntabinner.classList = "tabtext"
     ntabinner.onclick  = showThisWebview.bind(ntabinner, uuid);
     var tclose = document.createElement("span")
@@ -59,10 +59,12 @@ function generateActiveWbv(uuid,url){
     document.getElementById(uuid).addEventListener('enter-html-full-screen', function(){ //broken
         console.log("entering html-full-screen")
         fullscreen("enter")
+        // electron.remote.getCurrentWindow().setFullScreen(true)
     })
     document.getElementById(uuid).addEventListener('exit-html-full-screen', function(){ //also broken
         console.log("exiting html-full-screen")
         fullscreen("exit")
+        // electron.remote.getCurrentWindow().setFullScreen(false)
     })
     document.getElementById(uuid).addEventListener('did-finish-load', function(){ //push the webview's data to the history object
         appendToHistory(document.getElementById(uuid).getTitle(), document.getElementById(uuid).getURL())
@@ -75,13 +77,7 @@ function generateActiveWbv(uuid,url){
    
 }
 
-function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
-}
-  
+
 function makeNewTab(url){
     var uuid = uuidv4()
     var elements = document.getElementsByClassName('activewbv')
@@ -92,6 +88,12 @@ function makeNewTab(url){
     generateActiveWbv(uuid,url)
 }
 
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+}
 // btn.ondblclick  = warnUser.bind(btn, userid,username);
 
 function showThisWebview(uuid){
@@ -152,7 +154,7 @@ function loadingActivity(){
 window.setInterval(loadingActivity,50)
 
 function fullscreen(){
-    //figure out why electron won't fucking fullscreen later, but for now
+    //figure out why electron won't fucking fullscreen later
     //but honestly i just want sleep
     electron.remote.getCurrentWindow().maximize()
 }
@@ -194,7 +196,12 @@ function writeSecureStatusToUserInterface(){
         urlbar.style.width = "calc(100% - 350px)"
         document.getElementById("notsecure").style.display = "inline"
         document.getElementById("urlbar").title = insecure_string
-    } else{
+    } else if (getSecureStatus() == "LOCAL"){
+        urlbar.style.paddingLeft = "20px"
+        urlbar.style.width = "calc(100% - 240px)"
+        document.getElementById("notsecure").style.display = "none"
+        document.getElementById("urlbar").title = local_string
+    } else if(getSecureStatus() == "SECURE"){
         urlbar.style.paddingLeft = "20px"
         urlbar.style.width = "calc(100% - 240px)"
         document.getElementById("notsecure").style.display = "none"
@@ -243,4 +250,17 @@ function setTabTitle(uuid,title){
     // document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  "Home"
 }
 
+function closeCurrentTab(){
+    document.getElementsByClassName("activetab")[0].lastElementChild.click()
+}
 
+function getCurrentTab(){
+    // document.getElementById("tabregion").childNodes[1].classList.contains("activetab")
+    var int = 0
+    while(getTabQuantity() > 0){
+        // elements[0].classList.remove('activetab');
+    } 
+    function testelements(input){
+        return document.getElementById("tabregion").childNodes[input].classList.contains("activetab")
+    }
+}

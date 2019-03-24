@@ -214,6 +214,7 @@ webview{
     height: 32px;
     background: rgba(255,255,255,0);
     width: auto;
+    /* min-width: 200px; */
     max-width: 280px;
     overflow: hidden;
     color: white;
@@ -236,6 +237,7 @@ webview{
     position: absolute;
     /* background: green; */
     transition: 0.2s color ease;
+    justify-self: left;
 }
 
 .tabclosebtn:hover{
@@ -330,13 +332,21 @@ webview{
     width: calc(100% - 8px);
     padding-left: 8px;
     padding-right: 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     display: block;
     border-top: 1px solid rgba(255,255,255,0);
     border-bottom: 1px solid rgba(255,255,255,0);
     transition: 0.1s border ease;
     font-size: 16px;
+}
+
+.kshortcut{
+    color: grey !important;
+    justify-self: right;
+    font-size: 13px;
+    position: absolute;
+    right: 6px;
 }
 
 .disabledmnuitem{
@@ -520,4 +530,25 @@ webview{
 
 .bookmarkbutton:hover{
     border: 1px solid rgba(255,255,255,0.4);
+}
+
+#loadmask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #343538;
+    z-index: 70;
+    top: 0px;
+    right: 0px;
+    transition: 0.3s opacity ease;
+}
+
+#loadimg{
+    position: absolute;
+    width: 128px; 
+    height: 128px;
+    left: calc(50% - 64px);
+    top: calc(50% - 64px);
+    filter: grayscale(1);
+    opacity: 0.6;
 }
