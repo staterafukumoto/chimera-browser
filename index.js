@@ -126,6 +126,7 @@ function createWindow() {
   
     let menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
+    // win.setAutoHideMenuBar(true); //perhaps in a future instance where there is an optional native titlebar? 
   
 
   // and load the app ui of the app.
@@ -134,7 +135,7 @@ function createWindow() {
       win.on('app-command', function(e, cmd) { //listen for back button
         if (cmd === 'browser-backward') {
           win.webContents.send('go-back')
-        } else if (cmd === 'browser-forward') {
+        } else if (cmd === 'browser-forward') { //listen for the !back button
           win.webContents.send('go-fwd')
         }
       });

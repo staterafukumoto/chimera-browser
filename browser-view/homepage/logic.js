@@ -29,7 +29,7 @@ function openSettings(){
 }
 
 function openLibrary(){
-    window.location.href = "../settings/index.html"
+    window.location.href = "../bookmarks/index.html"
 }
 
 function imgAnimate(){
