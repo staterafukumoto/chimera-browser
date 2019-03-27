@@ -127,13 +127,13 @@ urlbar.addEventListener("keyup", function(event) {
   
 function closeTab(uuid){
     if (getTabQuantity() == 1){ //this is the last straw. er i mean tab.
-        // makeNewTab() //in the future, put code here with an option to close window or make new tab when there are no tabs
         window.close()
+    } else{ //this being an else statement probably speeds something up
+        removeTag(uuid)
+        removeTag("tab" + uuid)
+        //temporary solution, aim to select last tab in tab list in the future.
+        document.getElementsByClassName("tab")[0].firstElementChild.click()
     }
-    removeTag(uuid)
-    removeTag("tab" + uuid)
-    //temporary solution, aim to select last tab in tab list in the future.
-    document.getElementsByClassName("tab")[0].firstElementChild.click()
 }
 
 function loadingActivity(){
@@ -157,6 +157,7 @@ window.setInterval(loadingActivity,50)
 function fullscreen(){
     //figure out why electron won't fucking fullscreen later
     //but honestly i just want sleep
+    //update. still tired. i'm going to go to bed, goodnight whoever's reading this.
     electron.remote.getCurrentWindow().maximize()
 }
 
@@ -169,13 +170,19 @@ function closeThisTab(){
 }
 
 function showMenu(){
+    document.getElementById("backdropmenu").style.opacity = "1"
+    document.getElementById("backdropmenu").style.pointerEvents = "auto"
     document.getElementById("menu").style.top = "72px"
+    document.getElementById("menu").style.opacity = "1"
     document.getElementById("mnubutton").style.color = "#adadad"
     document.getElementById("mnubutton").onclick = hideMenu
 }
 
 function hideMenu(){
-    document.getElementById("menu").style.top = "-600px"
+    document.getElementById("backdropmenu").style.opacity = "0"
+    document.getElementById("backdropmenu").style.pointerEvents = "none"
+    document.getElementById("menu").style.top = "0px"
+    document.getElementById("menu").style.opacity = "0"
     document.getElementById("mnubutton").style.color = "white"
     document.getElementById("mnubutton").onclick = showMenu
 }
@@ -214,7 +221,7 @@ window.setInterval(updateAppTitle, 60)
 window.setInterval(writeSecureStatusToUserInterface, 60)
 
 function getTabQuantity(){
-    return document.getElementById("tabregion").childNodes.length - 1
+    return document.getElementById("tabregion").childNodes.length - 5 //who the hell thought comments counted as nodes? apparently they do!
 }
 
 

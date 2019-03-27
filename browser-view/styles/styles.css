@@ -1,5 +1,5 @@
 body{
-    background: white;
+    background: #343538;
     user-select: none;
     overflow: hidden;
 }
@@ -190,6 +190,7 @@ body{
 webview{
     display: none;
     transition: 0.3s all ease;
+    background: white;
 }
 
 #webwrapper{
@@ -319,7 +320,7 @@ webview{
 #menu{
     position: absolute;
     right: 2px;
-    top: -600px;
+    top: 0px;
     background: #212121;
     border: 1px solid rgba(255,255,255,0.5);
     z-index: 20;
@@ -328,7 +329,6 @@ webview{
     /* display: none; */
     transform: scale(1);
     transform-origin: 50% 0%;
-    opacity: 1;
 }
 
 .menuitem{
@@ -451,13 +451,14 @@ webview{
     position: absolute;
     background: #151515;
     border: 1px solid rgba(255, 255, 255, 0.6);
-    top: -175px;
+    top: 0px;
     left: 30%;
     right: 30%;
     height: 175px;
     z-index: 20;
     min-width: 320px;
-    transition: 0.3s top ease;
+    opacity: 0;
+    transition: 0.3s top ease, 0.3s opacity ease;
 }
 
 .bkmrkheader{
@@ -570,4 +571,17 @@ webview{
     z-index: 40;
     transition: 0.3s width ease, 0.3s left ease;
     pointer-events: none;
+}
+
+.backdrop{
+    position: absolute;
+    top: 68px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: rgba(0,0,0,0.2);
+    z-index: 19;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s opacity ease;
 }

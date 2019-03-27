@@ -8,6 +8,9 @@
 </head>
 <body onload='document.getElementById("loadmask").style.opacity = "0"; document.getElementById("loadmask").style.pointerEvents = "none"'>
 
+<div class="backdrop" id="backdropmenu" onclick="hideMenu()"></div>
+<div class="backdrop" id="backdropbookmarks" onclick="hideMenu()"></div>
+
 <div id="titlebar-region">
         
         <div class="ui-titlebar">
@@ -58,7 +61,7 @@
 </div> <!-- titlebar -->
 
 
-<div id="menu">
+<div id="menu" style="opacity: 0;">
     <span class="menuitem" onclick="makeNewTab(); hideMenu()"> New Tab <span class="kshortcut"> Ctrl + T </span> </span>
     <span class="menuitem" onclick="closeCurrentTab(); hideMenu()"> Close Tab <span class="kshortcut"> Ctrl + W </span> </span>
     <span class="menuitem" onclick="refreshActive(); hideMenu()"> Refresh <span class="kshortcut"> Ctrl + R </span> </span>
@@ -82,7 +85,7 @@
         <iframe id="panelframe" src="" frameborder="0"></iframe>
     </div>
     
-    <div id="bookmarkapplet">
+    <div id="bookmarkapplet" style="opacity: 0;">
         <span class="material-icons bkmrkicons">bookmark</span> <span class="bkmrkheader"> New Bookmark </span>
         <br>
         <input type="text" class="bookmarkinput" id="bookmarkname" placeholder="Name" onclick="this.select()">
