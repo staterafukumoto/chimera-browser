@@ -39,8 +39,3 @@ FluentRevealEffect.applyEffect(".bookmarkbutton", {
     gradientSize: 60,
     // clickEffect: true
 })
-
-
-// FluentRevealEffect.applyEffect(".tab", {
-// 	clickEffect: true
-// })

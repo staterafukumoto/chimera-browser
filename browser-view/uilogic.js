@@ -1,7 +1,7 @@
 function browserTheme(colour){
     //change the colour of the browser
     if (colour == "default"){
-        document.getElementById("titlebar-region").style.background = "#252525"
+        document.getElementById("titlebar-region").style.background = "#343538"
     } else{
         document.getElementById("titlebar-region").style.background = colour
     }
@@ -284,3 +284,11 @@ function buttonDisabler(){
 }
 
 window.setInterval(buttonDisabler,60)
+
+// pretty tabs
+function setIndicatorPos(){
+    document.getElementById("tabindic").style.left = document.getElementsByClassName("activetab")[0].offsetLeft + "px"
+    document.getElementById("tabindic").style.width = document.getElementsByClassName("activetab")[0].offsetWidth + "px"
+}
+
+window.setInterval(setIndicatorPos, 40)
