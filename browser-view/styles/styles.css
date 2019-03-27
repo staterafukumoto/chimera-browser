@@ -232,7 +232,7 @@ webview{
 }
 
 .tab:hover{
-    background: rgba(255,255,255,0.05);
+    /* background: rgba(255,255,255,0.05); */
 }
 
 .tabclosebtn{
@@ -327,6 +327,7 @@ webview{
     min-width: 220px;
     transition: 0.3s all cubic-bezier(.27,.62,.59,1.01);
     /* display: none; */
+    pointer-events: none;
     transform: scale(1);
     transform-origin: 50% 0%;
 }
@@ -459,6 +460,7 @@ webview{
     min-width: 320px;
     opacity: 0;
     transition: 0.3s top ease, 0.3s opacity ease;
+    pointer-events: none;
 }
 
 .bkmrkheader{
@@ -579,9 +581,23 @@ webview{
     left: 0px;
     bottom: 0px;
     right: 0px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.3);
     z-index: 19;
     opacity: 0;
     pointer-events: none;
     transition: 0.3s opacity ease;
+}
+
+#inverter{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    height: 68px;
+    background: transparent;
+    backdrop-filter: invert(1);
+    pointer-events: none;
+    z-index: 31;
+    display: none;
 }

@@ -2,8 +2,15 @@ function browserTheme(colour){
     //change the colour of the browser
     if (colour == "default"){
         document.getElementById("titlebar-region").style.background = "#343538"
+        document.getElementById("inverter").style.display = "none"
     } else{
-        document.getElementById("titlebar-region").style.background = colour
+        if (lightOrDark(colour) == "dark"){
+            document.getElementById("titlebar-region").style.background = colour
+            document.getElementById("inverter").style.display = "none"
+        } else{
+            document.getElementById("titlebar-region").style.background = invertColor(colour)
+            document.getElementById("inverter").style.display = "block"
+        }
     }
 }
 
@@ -174,6 +181,7 @@ function showMenu(){
     document.getElementById("backdropmenu").style.pointerEvents = "auto"
     document.getElementById("menu").style.top = "72px"
     document.getElementById("menu").style.opacity = "1"
+    document.getElementById("menu").style.pointerEvents = "auto"
     document.getElementById("mnubutton").style.color = "#adadad"
     document.getElementById("mnubutton").onclick = hideMenu
 }
@@ -183,6 +191,7 @@ function hideMenu(){
     document.getElementById("backdropmenu").style.pointerEvents = "none"
     document.getElementById("menu").style.top = "0px"
     document.getElementById("menu").style.opacity = "0"
+    document.getElementById("menu").style.pointerEvents = "none"
     document.getElementById("mnubutton").style.color = "white"
     document.getElementById("mnubutton").onclick = showMenu
 }
@@ -299,3 +308,72 @@ function setIndicatorPos(){
 }
 
 window.setInterval(setIndicatorPos, 40)
+
+function lightOrDark(color) {
+
+    // Variables for red, green, blue values
+    var r, g, b, hsp;
+    
+    // Check the format of the color, HEX or RGB?
+    if (color.match(/^rgb/)) {
+
+        // If HEX --> store the red, green, blue values in separate variables
+        color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+        
+        r = color[1];
+        g = color[2];
+        b = color[3];
+    } 
+    else {
+        
+        // If RGB --> Convert it to HEX: http://gist.github.com/983661
+        color = +("0x" + color.slice(1).replace( 
+        color.length < 5 && /./g, '$&$&'));
+
+        r = color >> 16;
+        g = color >> 8 & 255;
+        b = color & 255;
+    }
+    
+    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+    hsp = Math.sqrt(
+    0.299 * (r * r) +
+    0.587 * (g * g) +
+    0.114 * (b * b)
+    );
+
+    // Using the HSP value, determine whether the color is light or dark
+    if (hsp>127.5) {
+
+        return 'light';
+    } 
+    else {
+
+        return 'dark';
+    }
+}
+
+function invertColor(hex) {
+    if (hex.indexOf('#') === 0) {
+        hex = hex.slice(1);
+    }
+    // convert 3-digit hex to 6-digits.
+    if (hex.length === 3) {
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    if (hex.length !== 6) {
+        throw new Error('Invalid HEX color.');
+    }
+    // invert color components
+    var r = (255 - parseInt(hex.slice(0, 2), 16)).toString(16),
+        g = (255 - parseInt(hex.slice(2, 4), 16)).toString(16),
+        b = (255 - parseInt(hex.slice(4, 6), 16)).toString(16);
+    // pad each with zeros and return
+    return '#' + padZero(r) + padZero(g) + padZero(b);
+}
+
+function padZero(str, len) {
+    len = len || 2;
+    var zeros = new Array(len).join('0');
+    return (zeros + str).slice(-len);
+}

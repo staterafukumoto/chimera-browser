@@ -20,10 +20,13 @@ function createWindow() {
       minHeight: 380,
       frame: false,
       backgroundColor: "#343538",
-      webviewTag: true,
-      nodeIntegration: true,
       fullscreenable: true,
       plugins: true,
+      webPreferences: { 
+        experimentalFeatures: true,
+        nodeIntegration: true,
+        webviewTag: true,
+      },
     })
 
     const template =
