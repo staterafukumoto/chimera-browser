@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/styles.css" type="text/css">
     <link href="styles/gicons1.css" rel="stylesheet">
 </head>
-<body onload='document.getElementById("loadmask").style.opacity = "0"; document.getElementById("loadmask").style.pointerEvents = "none"'>
+<body onload='document.getElementById("loadmask").style.opacity = "0"; document.getElementById("loadmask").style.pointerEvents = "none"; ipc.send("is-ready")'>
 
 <div class="backdrop" id="backdropmenu" onclick="hideMenu()"></div>
 <div class="backdrop" id="backdropbookmarks" onclick="hideMenu()"></div>

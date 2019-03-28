@@ -2,13 +2,16 @@ function browserTheme(colour){
     //change the colour of the browser
     if (colour == "default"){
         document.getElementById("titlebar-region").style.background = "#343538"
+        document.getElementById("tabindic").style.background = "#343538"
         document.getElementById("inverter").style.display = "none"
     } else{
         if (lightOrDark(colour) == "dark"){
             document.getElementById("titlebar-region").style.background = colour
+            document.getElementById("tabindic").style.background = colour
             document.getElementById("inverter").style.display = "none"
         } else{
             document.getElementById("titlebar-region").style.background = invertColor(colour)
+            document.getElementById("tabindic").style.background = invertColor(colour)
             document.getElementById("inverter").style.display = "block"
         }
     }

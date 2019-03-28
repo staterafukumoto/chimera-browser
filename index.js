@@ -1,3 +1,6 @@
+//startup time measure
+console.time('render-ready')
+console.time('main-ready')
 //dependancies and stuff
 const { app, BrowserWindow } = require('electron')
 const ipc = require('electron').ipcMain
@@ -26,6 +29,7 @@ function createWindow() {
         experimentalFeatures: true,
         nodeIntegration: true,
         webviewTag: true,
+        'overlay-fullscreen-video': true,
       },
     })
 
@@ -145,7 +149,7 @@ function createWindow() {
     }
 }
 
-app.on('ready', createWindow)
+app.on('ready', createWindow, console.timeEnd('main-ready'))
 
 app.on('window-all-closed', () =>
 {
@@ -155,4 +159,8 @@ app.on('window-all-closed', () =>
 ipc.on('new-window', function (event, arg) {
   // browserWindow.setSheetOffset(38,34)
   createWindow()
+})
+
+ipc.on('is-ready', function (event, arg) {
+  console.timeEnd('render-ready')
 })

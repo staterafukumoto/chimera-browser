@@ -229,6 +229,7 @@ webview{
     transform-origin: 0% 50% 0;
     /* box-shadow: inset -1px 1px 0px 0px rgba(255,255,255,0.1); */
     transition: 0.2s background ease;
+    z-index: 41;
 }
 
 .tab:hover{
@@ -567,7 +568,8 @@ webview{
     top: 0px;
     display: block;
     height: 32px;
-    background: rgba(255,255,255,0.1);
+    /* background: rgba(255,255,255,0.1); */
+    background: #343538;
     box-shadow: inset 0px 2px 0px 0px rgba(255,255,255,1);
     width: 100px;
     z-index: 40;
