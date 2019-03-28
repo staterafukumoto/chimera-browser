@@ -10,6 +10,7 @@
 6. Pray to whatever god you worship that it compiles.
 
 ##Supported Platforms and Build Scripts
+
 >Windows x64 (Windows 7+)
 `buildwin` 
 
