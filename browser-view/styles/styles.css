@@ -221,7 +221,6 @@ webview{
     height: 32px;
     background: rgba(255,255,255,0);
     width: auto;
-    /* min-width: 200px; */
     max-width: 280px;
     overflow: hidden;
     color: white;
@@ -238,7 +237,7 @@ webview{
 
 .tabclosebtn{
     font-family: 'Material Icons' !important;
-    color: grey !important;
+    color: rgba(255, 255, 255, 0.3) !important;
     margin-right: 5px;
     margin-left: 5px;
     font-size: 24px;
@@ -249,7 +248,9 @@ webview{
 }
 
 .tabclosebtn:hover{
-    color: white !important;
+    /* color: white !important; */
+    color: rgba(255, 255, 255, 0.6) !important;
+
 }
 
 .tabtext{
@@ -575,6 +576,8 @@ webview{
     z-index: 40;
     transition: 0.3s width ease, 0.3s left ease;
     pointer-events: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 }
 
 .backdrop{

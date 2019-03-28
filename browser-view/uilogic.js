@@ -15,6 +15,7 @@ function browserTheme(colour){
             document.getElementById("inverter").style.display = "block"
         }
     }
+    localStorage["themeColor"] = colour
 }
 
 function webViewNightMode(arg){
