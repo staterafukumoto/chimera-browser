@@ -77,9 +77,9 @@ function get_hostname(url) {
 }
 
 function parseURL(input){
-    if(input.includes(".")){
+    if(input.includes(".") && input.indexOf(" ") == -1){
         //case for loading url
-        if (input.startsWith("https://") || input.startsWith("http://")){
+        if (input.startsWith("https://") || input.startsWith("http://") || input.startsWith("file://")|| input.startsWith("ftp://")){
             goTo(input)
         } else if(input.startsWith("www.")){
             goTo("https://" + input)

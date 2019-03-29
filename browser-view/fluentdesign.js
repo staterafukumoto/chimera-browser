@@ -39,3 +39,9 @@ FluentRevealEffect.applyEffect(".bookmarkbutton", {
     gradientSize: 60,
     // clickEffect: true
 })
+
+FluentRevealEffect.applyEffect("#tabindic", {
+	lightColor: "rgba(255,255,255,0.6)",
+    gradientSize: 60,
+    // clickEffect: true
+})

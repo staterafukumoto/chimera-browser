@@ -39,3 +39,7 @@ ipc.on('go-back', function(arg){
 ipc.on('go-fwd', function(arg){
     goFwdActive()
 })
+
+ipc.on('url-focus', function(arg){
+    document.getElementById("urlbar").focus()
+})

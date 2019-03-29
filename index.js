@@ -17,9 +17,9 @@ function uuidv4() {
 function createWindow() {
   // Create the browser window.
   let win = new BrowserWindow({
-      width: 1024, 
-      height: 600,
-      minWidth: 640,
+      width: 1154, 
+      height: 720,
+      minWidth: 550,
       minHeight: 380,
       frame: false,
       backgroundColor: "#343538",
@@ -59,6 +59,11 @@ function createWindow() {
             accelerator: 'Ctrl+H',
           },
           {
+            label: 'Focus URL Bar',
+            click () { win.webContents.send('url-focus') },
+            accelerator: 'Ctrl+L',
+          },
+          {
             label: 'New Window',
             click () { },
             // click () { createWindow() },
@@ -91,9 +96,14 @@ function createWindow() {
           {role: 'forcereload'},
           // {role: 'toggledevtools'},
           {
-            label: 'Developer Tools',
-            click () {} ,
+            label: 'Tab Inspector',
+            click () {win.webContents.send('tab-tools')} ,
             accelerator: 'CmdOrCtrl+Shift+I',
+          },
+          {
+            label: 'App Inspector',
+            role: 'toggledevtools',
+            accelerator: 'CmdOrCtrl+Shift+Alt+I',
           },
           {type: 'separator'},
           {role: 'resetzoom'},

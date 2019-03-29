@@ -32,22 +32,34 @@ function makeNewTabLabel(uuid){
     var elements = document.getElementsByClassName('activetab')
     while(elements.length > 0){
         elements[0].classList.remove('activetab');
-    } 
+    }
+    //make the tab container
     var ntab = document.createElement("div")
     ntab.id = "tab" + uuid
     ntab.innerHTML = " "
     ntab.classList = "activetab tab"
+    //make the tab text
     var ntabinner = document.createElement("span")
     ntabinner.id = "inner" + uuid
     ntabinner.innerHTML = "New Tab"
     ntabinner.classList = "tabtext"
     ntabinner.onclick  = showThisWebview.bind(ntabinner, uuid);
+    //make the tab favicon
+    var ntabicon = document.createElement("img")
+    ntabicon.id = "icon" + uuid
+    ntabicon.src = "../assets/icons/win/icon.ico"
+    ntabicon.classList = "tabimg"
+    ntabicon.draggable = false
+    ntabicon.onclick  = showThisWebview.bind(ntabicon, uuid);
+    //make the close button
     var tclose = document.createElement("span")
     tclose.id = "close" + uuid
     tclose.innerHTML = "close"
     tclose.onclick  = closeTab.bind(tclose, uuid);
     tclose.classList = "tabclosebtn"
+    //append to tabregion
     ntab.appendChild(ntabinner)
+    ntab.appendChild(ntabicon)
     ntab.appendChild(tclose)
     document.getElementById("tabregion").appendChild(ntab)
 }
@@ -67,6 +79,12 @@ function generateActiveWbv(uuid,url){
         var protocol = require('url').parse(e.url).protocol
             makeNewTab(e.url)
     })
+    document.getElementById(uuid).addEventListener('update-target-url', (e) => { //get the url that has mouse/keyboard focus
+        showStatusBar(e.url)
+    })
+    document.getElementById(uuid).addEventListener('page-favicon-updated', (e) => { //update favicon
+        document.getElementById("icon" + uuid).src = e.favicons[0]
+    })
     document.getElementById(uuid).addEventListener('enter-html-full-screen', function(){ //broken
         console.log("entering html-full-screen")
         fullscreen("enter")
@@ -81,7 +99,6 @@ function generateActiveWbv(uuid,url){
         appendToHistory(document.getElementById(uuid).getTitle(), document.getElementById(uuid).getURL())
     })
     document.getElementById(uuid).addEventListener('page-title-updated', function(){ //push the webview's data to the history object
-        // appendToHistory(document.getElementById(uuid).getTitle(), document.getElementById(uuid).getURL())
         setTabTitle(uuid, document.getElementById(uuid).getTitle())
     })
   

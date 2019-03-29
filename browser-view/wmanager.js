@@ -81,6 +81,11 @@ function otherLayout(){ //a layout more... mac like perhaps? ( ͡° ͜ʖ ͡°)
      document.getElementById("newtabbutton").style.right = "0px"
      document.getElementById("urlbar").style.borderRadius = "6px"
      document.getElementById("urlbar").style.borderColor = "rgba(0,0,0,0)"
+     document.getElementById("menu").style.borderRadius = "6px"
+     document.getElementById("bookmarkapplet").style.borderRadius = "6px"
+     document.getElementById("tabindic").style.borderTopLeftRadius = "6px"
+     document.getElementById("tabindic").style.borderTopRightRadius = "6px"
+     document.getElementById("tabindic").style.boxShadow = "none"
 }
 
 function find_csa(arr, subarr, from_index) {

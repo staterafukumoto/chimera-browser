@@ -70,13 +70,13 @@
     <!-- <span class="menuitem" onclick="ipc.send('new-window')"> New Window <span class="kshortcut"> Ctrl + N </span> </span> -->
     <hr>
     <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/bookmarks/index.html'); hideMenu()"> Library <span class="kshortcut"> Ctrl + H </span> </span>
-    <span class="menuitem" onclick="showBookmarkApplet(); hideMenu()"> New Bookmark <span class="kshortcut"> Ctrl + D </span> </span>
-    <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/settings/index.html'); hideMenu()"> Chimera Preferences <span class="kshortcut"> Alt + P </span></span>
+    <span class="menuitem" onclick="showBookmarkApplet(); hideMenu()"> Bookmark This Page <span class="kshortcut"> Ctrl + D </span> </span>
+    <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/settings/index.html'); hideMenu()"> Preferences <span class="kshortcut"> Alt + P </span></span>
     <span class="menuitem disabledmnuitem"> Find in Page </span>
     <span class="menuitem disabledmnuitem"> Forget </span>
     <span class="menuitem" onclick="browserThemeSelect(); hideMenu()"> Toolbar Colour </span>
-    <span class="menuitem" onclick="document.getElementsByClassName('activewbv')[0].openDevTools(); hideMenu()"> Open Tab Inspector </span>
-    <span class="menuitem" onclick="BrowserWindow.getFocusedWindow().openDevTools(); hideMenu()"> Open App Inspector </span>
+    <span class="menuitem" onclick="document.getElementsByClassName('activewbv')[0].openDevTools(); hideMenu()"> Tab Inspector <span class="kshortcut"> Ctrl + Shift + I </span> </span>
+    <span class="menuitem" onclick="BrowserWindow.getFocusedWindow().openDevTools(); hideMenu()"> App Inspector <span class="kshortcut"> Ctrl + Shift + Alt + I </span> </span>
 </div>
 
 <div id="panelwrapper">
@@ -98,7 +98,9 @@
             <span class="bookmarkbutton">Confirm</span>
         </div>
 </div>
-    
+
+<div id="statusbar">Sample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample Text</div>
+
 <div id="webwrapper"></div>
 
 <div id="loadmask">
@@ -118,5 +120,6 @@
     <script src="history.js"></script>
     <script src="bookmark.js"></script>
     <script src="../lang.js"></script>
+    <script src="pagestatus.js"></script>
 </body>
 </html>
