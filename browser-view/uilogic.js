@@ -343,8 +343,8 @@ function setIndicatorPos(){
 
 window.setInterval(setIndicatorPos, 40)
 
+//THANK YOU STACKOVERFLOW
 function lightOrDark(color) {
-
     // Variables for red, green, blue values
     var r, g, b, hsp;
     
@@ -413,14 +413,15 @@ function padZero(str, len) {
 }
 
 function cleanSlate(){
-    deleteFromHistory(50)
+    var amntClear = 25
+    createToast("Clearing " + amntClear +" history entries and restarting")
+    deleteFromHistory(amntClear)
     location.reload()
 }
 
 function deleteFromHistory(quantity){
-    createToast("Clearing 50 history entries and restarting")
     var afterlength = historyObject.length - quantity + 1
-    do{
+    do{ //a regular while loop doesn't work here... okay.
         historyObject.shift()
     } while( historyObject.length >= afterlength)
     historySave()

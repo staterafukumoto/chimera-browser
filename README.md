@@ -1,13 +1,13 @@
-# Chimera Web Browser
+# Chimera Web Browser (work in progress)
 > <b> Raise your banner. </b>
 ## How to build
-0. Listen to [this](https://www.youtube.com/watch?v=GDpmVUEjagg) in the background (always do this when building or compiling)
-1. [Download and install NodeJS onto your computer's disk](https://nodejs.org/en/)
-2. Open the repository folder into your OS's terminal (usually via the `cd` command)
-3. Run the command `npm i` or `npm install` to make sure you've downloaded all the dependencies
-4. Run with `npm start` to make sure it works correctly on your OS (has been tested working on windows 10 x64 and manjaro i3)
-5. Run the correct build script to compile it for your operating system (see *Supported Platforms and Build Scripts*)
-6. Pray to whatever god you worship that it compiles.
+1. Listen to [this](https://www.youtube.com/watch?v=GDpmVUEjagg) in the background (always do this when building or compiling)
+2. [Download and install NodeJS onto your computer's disk](https://nodejs.org/en/)
+3. Open the repository folder into your OS's terminal (usually via the `cd` command)
+4. Run the command `npm i` or `npm install` to make sure you've downloaded all the dependencies
+5. Run with `npm start` to make sure it works correctly on your OS (has been tested working on windows 10 x64 and manjaro i3)
+6. Run the correct build script to compile it for your operating system (see *Supported Platforms and Build Scripts*)
+7. Pray to whatever god you worship that it compiles.
 
 ##Supported Platforms and Build Scripts
 

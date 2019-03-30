@@ -77,6 +77,11 @@ function createWindow() {
           {role: 'undo'},
           {role: 'redo'},
           {type: 'separator'},
+          {
+            label: 'Clean Slate',
+            click () { win.webContents.send('clean-slate') },
+            accelerator: 'Ctrl+Alt+Q',
+          },
           {role: 'cut'},
           {role: 'copy'},
           {role: 'paste'},
