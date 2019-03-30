@@ -1,6 +1,6 @@
 {
   "name": "chimera-browser",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "open source electron-based web browser",
   "main": "index.js",
   "scripts": {

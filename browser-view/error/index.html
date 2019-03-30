@@ -10,12 +10,25 @@
 <body onload="document.getElementById('errorcodeinner').innerHTML = localStorage['tempErrorCode'].toLowerCase()">
 
 <div id="content">
-    <img class="productlogo" draggable="false" src="../img/icon.png" title="Hi :D">
+    <img id="productlogo" class="productlogo" draggable="false" src="../img/error.png" title="Hi :D">
         <div id="sidecontent">
             <span class="header"> Sorry! </span>
             <span class="version">An error occured and the chimera could not <br> deliver your page. He's trying his best, though.</span> <br>
         </div>
-        <div id="errorcode"> Error Description: <span id="errorcodeinner"></span></div>
+        <div id="errorcode"> Error Description: 
+            <span id="errorcodeinner"></span>
+            <span id="showmore" class="material-icons ecodeicon" onclick="showDropDown()">arrow_drop_down</span></div>
 </div>
+        <div id="errorDropdown">
+            <span class="dlheader">Here, try these:</span>
+            <ul class="dlul">
+                <li>Check your WiFi connection / Ethernet cable</li>
+                <li>Restart your computer</li>
+                <li>Ring your service provider</li>
+                <li>Pet a cute animal and wait for the internet to come back</li>
+                <li>Play with opening and closing this box (it's fun)</li>
+            </ul>
 
+        </div>
+<script src="showhide.js"></script>      
 </body>

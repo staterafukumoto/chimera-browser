@@ -7,14 +7,36 @@ body{
 #content{
   position: absolute;
   width: 500px;
-  top: 10%;
+  top: 50px;
   height: 152px;
   background: #343538;
   align-self: center;
-  left: calc(50% - 250px);
+  left: calc(50% - 251px);
+  /* animation: animin 0.3s ease; */
+  opacity: 1;
+  z-index: 2;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-bottom: none;
+}
+
+#errorDropdown{
+  position: absolute;
+  /* display: none; */
+  width: 500px;
+  /* top: calc(50px + 152px); */
+  top: 51px;
+  height: 152px;
+  background: #343538;
+  align-self: center;
+  left: calc(50% - 251px);
   /* box-shadow: 0px 0px 35px 3px rgba(0,0,0,0.25); */
   /* animation: animin 0.3s ease; */
   opacity: 1;
+  z-index: 0;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-top: none;
+  color: rgba(255,255,255,0.7);
+  transition: 0.3s top ease;
 }
 
 .productlogo{
@@ -63,4 +85,25 @@ body{
 #errorcodeinner{
   user-select: all;
   font-weight: lighter !important;
+}
+
+.ecodeicon{
+  position: absolute;
+  right: 0px;
+  /* transform: rotate(90deg); */
+  transition: 0.2s transform ease;
+  cursor: pointer;
+}
+
+.dlheader{
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  font-size: 18px;
+}
+
+.dlul{
+  position: absolute;
+  left: 4px;
+  top: 14px;
 }

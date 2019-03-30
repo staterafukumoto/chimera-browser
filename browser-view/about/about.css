@@ -7,13 +7,14 @@ body{
 #content{
   position: absolute;
   width: 500px;
-  top: 10%;
+  top: 50px;
   bottom: 10%;
   background: #343538;
   /* border-radius: 16px; */
   align-self: center;
-  left: calc(50% - 250px);
+  left: calc(50% - 251px);
   min-height: 500px;
+  border: 1px solid rgba(255,255,255,0.2);
   /* box-shadow: 0px 0px 35px 3px rgba(0,0,0,0.25); */
   /* animation: animin 0.3s ease; */
   opacity: 1;
