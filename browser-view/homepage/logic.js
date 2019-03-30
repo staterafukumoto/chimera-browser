@@ -28,10 +28,14 @@ function openSettings(){
     window.location.href = "../settings/index.html"
 }
 
+
 function openLibrary(){
     window.location.href = "../bookmarks/index.html"
 }
 
+function openAbout(){
+    window.location.href = "../about/index.html"
+}
 function imgAnimate(){
     document.getElementById("background-img").style.opacity = "0.3"
     document.getElementById("background-img").style.transform = "scale(1)"

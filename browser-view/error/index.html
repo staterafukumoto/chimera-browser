@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title id="apptitle">Sorry!</title>
+    <link href="../styles/gicons1.css" rel="stylesheet">
+    <link href="error.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../../assets/icons/win/icon.ico">
+</head>
+<body onload="document.getElementById('errorcodeinner').innerHTML = localStorage['tempErrorCode'].toLowerCase()">
+
+<div id="content">
+    <img class="productlogo" draggable="false" src="../img/icon.png" title="Hi :D">
+        <div id="sidecontent">
+            <span class="header"> Sorry! </span>
+            <span class="version">An error occured and the chimera could not <br> deliver your page. He's trying his best, though.</span> <br>
+        </div>
+        <div id="errorcode"> Error Description: <span id="errorcodeinner"></span></div>
+</div>
+
+</body>

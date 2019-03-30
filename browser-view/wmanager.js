@@ -101,3 +101,13 @@ function find_csa(arr, subarr, from_index) {
      }
      return -1;
  }
+
+ function simulatePageError(error){
+     if (error == undefined){
+          localStorage["tempErrorCode"] = "ERR_TEST_ERROR"
+     } else{
+          localStorage["tempErrorCode"] = error + "_TEST"
+     }
+     document.getElementsByClassName("activewbv")[0].stop()
+     document.getElementsByClassName("activewbv")[0].src = "error/index.html"
+ }

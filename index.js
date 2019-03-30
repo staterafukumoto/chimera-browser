@@ -20,7 +20,7 @@ function createWindow() {
       width: 1154, 
       height: 720,
       minWidth: 550,
-      minHeight: 380,
+      minHeight: 590,
       frame: false,
       backgroundColor: "#343538",
       fullscreenable: true,

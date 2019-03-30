@@ -1,0 +1,67 @@
+body{
+    background: #202020;
+    user-select: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#content{
+  position: absolute;
+  width: 500px;
+  top: 10%;
+  bottom: 10%;
+  background: #343538;
+  /* border-radius: 16px; */
+  align-self: center;
+  left: calc(50% - 250px);
+  min-height: 500px;
+  /* box-shadow: 0px 0px 35px 3px rgba(0,0,0,0.25); */
+  /* animation: animin 0.3s ease; */
+  opacity: 1;
+}
+
+.productlogo{
+  width: 128px;
+  transition: 0.2s opacity ease;
+}
+
+/* .productlogo:hover{
+  opacity: 0.6;
+} */
+
+#sidecontent{
+  /* background: red; */
+  position: absolute;
+  top: 0px;
+  left: 136px;
+  height: 128px;
+  right: 0px;
+  color: white;
+}
+
+.header{
+  font-size: 44px;
+  padding-top: 4px;
+  display: block;
+}
+
+#lowercontent{
+  background: #242528;
+  /* color: white; */
+  position: absolute;
+  top: 128px;
+  left: 0px;
+  right: 0px;
+  bottom: 24px;
+  /* border-radius: 6px; */
+}
+
+.version{
+  font-size: 18px !important;
+  user-select: text !important;
+  cursor: text;
+}
+
+@keyframes animin {
+  0%   { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1);}
+}

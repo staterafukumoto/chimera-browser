@@ -67,7 +67,8 @@ function makeNewTabLabel(uuid){
 function generateActiveWbv(uuid,url){
     var wbv = document.createElement("WEBVIEW")
     wbv.classList = "activewbv"
-    wbv.useragent = useragent
+    // wbv.useragent = useragent
+    wbv.preload = "browserpreload.js"
     if (typeof url === "undefined"){
         wbv.src = homepage
     } else{
@@ -81,6 +82,18 @@ function generateActiveWbv(uuid,url){
     })
     document.getElementById(uuid).addEventListener('update-target-url', (e) => { //get the url that has mouse/keyboard focus
         showStatusBar(e.url)
+    })
+    document.getElementById(uuid).addEventListener('did-fail-load', (e) => { //get the url that has mouse/keyboard focus
+        console.log(e.errorDescription)
+        if (e.errorCode != -3){
+            document.getElementById(uuid).stop()
+            window.setTimeout(function(){
+                localStorage["tempErrorCode"] = e.errorDescription
+                document.getElementById(uuid).stop()
+                document.getElementById(uuid).src = "error/index.html"
+            },250)
+
+        }
     })
     document.getElementById(uuid).addEventListener('page-favicon-updated', (e) => { //update favicon
         document.getElementById("icon" + uuid).src = e.favicons[0]
@@ -397,4 +410,18 @@ function padZero(str, len) {
     len = len || 2;
     var zeros = new Array(len).join('0');
     return (zeros + str).slice(-len);
+}
+
+function cleanSlate(){
+    deleteFromHistory(50)
+    location.reload()
+}
+
+function deleteFromHistory(quantity){
+    createToast("Clearing 50 history entries and restarting")
+    var afterlength = historyObject.length - quantity + 1
+    do{
+        historyObject.shift()
+    } while( historyObject.length >= afterlength)
+    historySave()
 }

@@ -29,7 +29,7 @@
 </div>
 </div>
 
-
+<div id="dummytabregion"></div>
 <div id="tabregion"> 
         <div id="tabindic"></div>
     <!-- tabs will populate here -->
@@ -66,6 +66,7 @@
 <div id="menu" style="opacity: 0;">
     <span class="menuitem" onclick="makeNewTab(); hideMenu()"> New Tab <span class="kshortcut"> Ctrl + T </span> </span>
     <span class="menuitem" onclick="closeCurrentTab(); hideMenu()"> Close Tab <span class="kshortcut"> Ctrl + W </span> </span>
+    <span class="menuitem" onclick="cleanSlate(); hideMenu()"> Clean Slate <span class="kshortcut"> Ctrl + Alt + Q </span> </span>
     <span class="menuitem" onclick="refreshActive(); hideMenu()"> Refresh <span class="kshortcut"> Ctrl + R </span> </span>
     <!-- <span class="menuitem" onclick="ipc.send('new-window')"> New Window <span class="kshortcut"> Ctrl + N </span> </span> -->
     <hr>
@@ -77,6 +78,10 @@
     <span class="menuitem" onclick="browserThemeSelect(); hideMenu()"> Toolbar Colour </span>
     <span class="menuitem" onclick="document.getElementsByClassName('activewbv')[0].openDevTools(); hideMenu()"> Tab Inspector <span class="kshortcut"> Ctrl + Shift + I </span> </span>
     <span class="menuitem" onclick="BrowserWindow.getFocusedWindow().openDevTools(); hideMenu()"> App Inspector <span class="kshortcut"> Ctrl + Shift + Alt + I </span> </span>
+    <hr>
+    <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/about/index.html'); hideMenu()"> About </span>
+    <span class="menuitem" onclick="window.close()"> Close <span class="kshortcut"> Alt + F4 </span> </span>
+
 </div>
 
 <div id="panelwrapper">
@@ -99,8 +104,8 @@
         </div>
 </div>
 
-<div id="statusbar">Sample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample TextSample Text</div>
-
+<div id="statusbar"></div>
+<!-- webviews will populate here -->
 <div id="webwrapper"></div>
 
 <div id="loadmask">
@@ -120,6 +125,7 @@
     <script src="history.js"></script>
     <script src="bookmark.js"></script>
     <script src="../lang.js"></script>
+    <script src="../version.js"></script>
     <script src="pagestatus.js"></script>
 </body>
 </html>
