@@ -9,7 +9,7 @@
 6. Run the correct build script to compile it for your operating system (see *Supported Platforms and Build Scripts*)
 7. Pray to whatever god you worship that it compiles.
 
-##Supported Platforms and Build Scripts
+<b>Supported Platforms and Build Scripts</b>
 
 >Windows x64 (Windows 7+)
 `buildwin` 
