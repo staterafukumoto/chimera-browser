@@ -13,7 +13,7 @@ body{
   /* border-radius: 16px; */
   align-self: center;
   left: calc(50% - 251px);
-  min-height: 500px;
+  min-height: 400px;
   border: 1px solid rgba(255,255,255,0.2);
   /* box-shadow: 0px 0px 35px 3px rgba(0,0,0,0.25); */
   /* animation: animin 0.3s ease; */
@@ -54,6 +54,13 @@ body{
   right: 0px;
   bottom: 24px;
   /* border-radius: 6px; */
+  overflow-y: auto;
+  color: white;
+  padding-top: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  cursor: text !important;
+  user-select: text !important;
 }
 
 .version{

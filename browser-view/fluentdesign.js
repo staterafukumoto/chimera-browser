@@ -45,3 +45,9 @@ FluentRevealEffect.applyEffect("#tabindic", {
     gradientSize: 60,
     // clickEffect: true
 })
+
+FluentRevealEffect.applyEffect(".dditem", {
+	lightColor: "rgba(255,255,255,0.3)",
+    gradientSize: 450,
+    clickEffect: true,
+})

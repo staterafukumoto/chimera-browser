@@ -83,12 +83,13 @@ function generateActiveWbv(uuid,url){
     document.getElementById(uuid).addEventListener('update-target-url', (e) => { //get the url that has mouse/keyboard focus
         showStatusBar(e.url)
     })
-    document.getElementById(uuid).addEventListener('did-fail-load', (e) => { //get the url that has mouse/keyboard focus
+    document.getElementById(uuid).addEventListener('did-fail-load', (e) => { //the fault in our connection
         console.log(e.errorDescription)
         if (e.errorCode != -3){
             document.getElementById(uuid).stop()
             window.setTimeout(function(){
                 localStorage["tempErrorCode"] = e.errorDescription
+                localStorage["tempErrorURL"] = document.getElementById(uuid).getURL()
                 document.getElementById(uuid).stop()
                 document.getElementById(uuid).src = "error/index.html"
             },250)
@@ -156,6 +157,7 @@ urlbar.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
       parseURL(urlbar.value)
       urlbar.blur()
+    //   hideDropDown()
     }
 })
 
@@ -163,6 +165,7 @@ urlbar.addEventListener("keyup", function(event) {
     // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 27) {
       urlbar.blur()
+    //   hideDropDown()
     }
 })
   

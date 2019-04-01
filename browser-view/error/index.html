@@ -7,13 +7,13 @@
     <link href="error.css" rel="stylesheet">
     <link rel="shortcut icon" href="../../assets/icons/win/icon.ico">
 </head>
-<body onload="document.getElementById('errorcodeinner').innerHTML = localStorage['tempErrorCode'].toLowerCase()">
+<body onload="fillErrorCode()">
 
 <div id="content">
     <img id="productlogo" class="productlogo" draggable="false" src="../img/error.png" title="Hi :D">
         <div id="sidecontent">
             <span class="header"> Sorry! </span>
-            <span class="version">An error occured and the chimera could not <br> deliver your page. He's trying his best, though.</span> <br>
+            <span class="version" id="maintext">An error occured and the chimera could not <br> deliver your page. He's trying his best, though.</span> <br>
         </div>
         <div id="errorcode"> Error Description: 
             <span id="errorcodeinner"></span>
@@ -22,13 +22,14 @@
         <div id="errorDropdown">
             <span class="dlheader">Here, try these:</span>
             <ul class="dlul">
-                <li>Check your WiFi connection / Ethernet cable</li>
-                <li>Restart your computer</li>
-                <li>Ring your service provider</li>
-                <li>Pet a cute animal and wait for the internet to come back</li>
-                <li>Play with opening and closing this box (it's fun)</li>
+                <li id="casespecific">Check your WiFi connection / Ethernet cable</li>
+                <li id="litwo">Restart your computer</li>
+                <li id="lithree">Ring your service provider</li>
+                <li id="lifour">Pet a cute animal and wait for the internet to come back</li>
+                <li id="lifive">Play with opening and closing this box (it's fun)</li>
             </ul>
 
         </div>
-<script src="showhide.js"></script>      
+<script src="errorprocess.js"></script>    
+<script src="showhide.js"></script>    
 </body>

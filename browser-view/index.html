@@ -9,7 +9,8 @@
 <body onload='document.getElementById("loadmask").style.opacity = "0"; document.getElementById("loadmask").style.pointerEvents = "none"; ipc.send("is-ready")'>
 
 <div class="backdrop" id="backdropmenu" onclick="hideMenu()"></div>
-<div class="backdrop" id="backdropbookmarks" onclick="hideMenu()"></div>
+<div class="backdrop" id="backdropbookmarks" onclick="hideBookmarkApplet()"></div>
+<!-- <div class="backdrop" id="backdropurlbar" onclick="hideDropDown(); document.getElementById('dropdownwrapper').style.display = 'none'"></div> -->
 
 <div id="inverter"></div>
 
@@ -38,7 +39,8 @@
 <div id="newtabbutton" onclick="makeNewTab(); document.getElementById('urlbar').focus(); document.getElementById('urlbar').value = ''"> + </div>
 
 <span id="notsecure"> &#9888; Not Secure &nbsp;</span>
-<input type="text" id="urlbar" placeholder="Search the Web or Type a URL" onclick="urlBarSelect()">
+
+<input type="text" id="urlbar" placeholder="Search the Web or Type a URL" onclick="urlBarSelect(); //showDropDown();">
 
 <div id="navbuttons">
     <span id="backbutton" class="material-icons ubarnavbtn" onclick="goBackActive()">arrow_back</span>
@@ -62,6 +64,22 @@
 
 </div> <!-- titlebar -->
 
+<div id="dropdownwrapper">
+
+    <div id="dropdown">
+        <span class="dditem" onclick="console.log('a')"> Test </span>
+        <span class="dditem"> Test </span>
+        <span class="dditem"> Test </span>
+        <span class="dditem"> Test </span>
+        <span class="dditem"> Test </span>
+        <span class="dditem"> Test </span>
+        <span class="dditem"> Test </span>
+        <div id="ddbottom">
+            <span class="ddbottomlabel" id="ddbottomtext"> Search Google For - Yes</span>
+        </div>
+    </div>
+
+</div>
 
 <div id="menu" style="opacity: 0;">
     <span class="menuitem" onclick="makeNewTab(); hideMenu()"> New Tab <span class="kshortcut"> Ctrl + T </span> </span>
@@ -124,6 +142,7 @@
     <script src="waywork.js"></script>
     <script src="history.js"></script>
     <script src="bookmark.js"></script>
+    <script src="dropdown.js"></script>
     <script src="../lang.js"></script>
     <script src="../version.js"></script>
     <script src="pagestatus.js"></script>
