@@ -74,11 +74,14 @@ function browserThemeSelect(){ //this is a temporary solution, a built in ui wil
       .catch(console.error);
 }
 
-function otherLayout(){ //a layout more... mac like perhaps? ( ͡° ͜ʖ ͡°)
-     document.getElementsByClassName("ui-titlecontrols")[0].style.display = "none"
+function otherLayout(arg){ //a layout more... mac like perhaps? ( ͡° ͜ʖ ͡°)
+     //arg = mac/pc (assumed pc if unfilled)
+     if (arg == "mac"){
+          document.getElementById("tabregion").style.paddingLeft = "80px"
+          document.getElementsByClassName("ui-titlecontrols")[0].style.display = "none"
+          document.getElementById("newtabbutton").style.right = "0px"
+     }
      document.getElementById("tabregion").style.right = "0px"
-     document.getElementById("tabregion").style.paddingLeft = "80px"
-     document.getElementById("newtabbutton").style.right = "0px"
      document.getElementById("urlbar").style.borderRadius = "6px"
      document.getElementById("urlbar").style.borderColor = "rgba(0,0,0,0)"
      document.getElementById("menu").style.borderRadius = "6px"
@@ -86,6 +89,7 @@ function otherLayout(){ //a layout more... mac like perhaps? ( ͡° ͜ʖ ͡°)
      document.getElementById("tabindic").style.borderTopLeftRadius = "6px"
      document.getElementById("tabindic").style.borderTopRightRadius = "6px"
      document.getElementById("tabindic").style.boxShadow = "none"
+
 }
 
 function find_csa(arr, subarr, from_index) {

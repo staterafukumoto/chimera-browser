@@ -170,13 +170,22 @@ urlbar.addEventListener("keyup", function(event) {
 })
   
 function closeTab(uuid){
+    if (document.getElementsByClassName("activewbv")[0].id == uuid){
+        var flag = 1
+        console.log("tab_in_foreground")
+    } else{
+        var flag = 0
+        console.log("tab_in_background")
+    }
     if (getTabQuantity() == 1){ //this is the last straw. er i mean tab.
         window.close()
     } else{ //this being an else statement probably speeds something up
+        if (flag == 1){
+            //temporary solution, aim to select last tab in tab list in the future.
+            document.getElementsByClassName("tab")[0].firstElementChild.click()
+        } else{} //don't switch tabs if the tab that's being closed isn't the focused tab
         removeTag(uuid)
         removeTag("tab" + uuid)
-        //temporary solution, aim to select last tab in tab list in the future.
-        document.getElementsByClassName("tab")[0].firstElementChild.click()
     }
 }
 
