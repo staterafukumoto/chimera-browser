@@ -177,5 +177,5 @@ ipc.on('new-window', function (event, arg) {
 })
 
 ipc.on('is-ready', function (event, arg) {
-  console.timeEnd('render-ready')
+    console.timeEnd('render-ready') //the total time
 })

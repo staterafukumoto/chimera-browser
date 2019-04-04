@@ -171,11 +171,9 @@ urlbar.addEventListener("keyup", function(event) {
   
 function closeTab(uuid){
     if (document.getElementsByClassName("activewbv")[0].id == uuid){
-        var flag = 1
-        console.log("tab_in_foreground")
+        var flag = 1 // tab in foreground
     } else{
-        var flag = 0
-        console.log("tab_in_background")
+        var flag = 0 //tab in background
     }
     if (getTabQuantity() == 1){ //this is the last straw. er i mean tab.
         window.close()
@@ -183,7 +181,8 @@ function closeTab(uuid){
         if (flag == 1){
             //temporary solution, aim to select last tab in tab list in the future.
             document.getElementsByClassName("tab")[0].firstElementChild.click()
-        } else{} //don't switch tabs if the tab that's being closed isn't the focused tab
+        } else{} //don't switch tabs if the tab that's 
+        //being closed isn't the focused tab
         removeTag(uuid)
         removeTag("tab" + uuid)
     }
@@ -437,4 +436,14 @@ function deleteFromHistory(quantity){
         historyObject.shift()
     } while( historyObject.length >= afterlength)
     historySave()
+}
+
+function checkTabPlace(uuid){
+    var openTabs = document.getElementById("tabregion").childNodes
+    // var tabQuantity = getTabQuantity()
+    var tabQuantity = document.getElementById("tabregion").childNodes.length
+    var i
+    while(openTabs > 0){
+    }
+
 }
