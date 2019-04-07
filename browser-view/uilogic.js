@@ -64,7 +64,7 @@ function makeNewTabLabel(uuid){
     document.getElementById("tabregion").appendChild(ntab)
 }
 
-function generateActiveWbv(uuid,url){
+function generateActiveWbv(uuid,url){ //this generates the frame itself
     var wbv = document.createElement("WEBVIEW")
     wbv.classList = "activewbv"
     // wbv.useragent = useragent
@@ -307,7 +307,7 @@ function urlBarSelect(){
 }
 
 function setTabTitle(uuid,title){
-    document.getElementById('tab' + uuid).childNodes[1].innerHTML = title
+    document.getElementById('tab' + uuid).childNodes[1].innerHTML = sanitiseText(title)
     document.getElementById('tab' + uuid).title = title
     // document.getElementsByClassName("activetab")[0].childNodes[1].innerHTML =  "Home"
 }
@@ -446,4 +446,12 @@ function checkTabPlace(uuid){
     while(openTabs > 0){
     }
 
+}
+
+function sanitiseText(input){
+    //function for sanitising user input before putting it in the ui
+    //because you can type things in there and if you could do html injection
+    //into the browser's ui that's not very good D:
+    var s1 = input.replace("<","&lt;")
+    return s1
 }
