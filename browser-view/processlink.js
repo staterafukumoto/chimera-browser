@@ -52,3 +52,10 @@ ipc.on('clean-slate', function(arg){
     // document.getElementsByClassName('activewbv')[0].openDevTools()
     cleanSlate()
 })
+ipc.on('bound-box', function(arg){
+    toggleDebug()
+})
+
+function runOnMain(code){ // this is like a little dangerous so use sparingly
+    ipc.send('runonmain',code)
+}

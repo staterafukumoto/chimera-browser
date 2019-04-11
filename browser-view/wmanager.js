@@ -115,3 +115,11 @@ function find_csa(arr, subarr, from_index) {
      document.getElementsByClassName("activewbv")[0].stop()
      document.getElementsByClassName("activewbv")[0].src = "error/index.html"
  }
+
+function addCSS(filename){
+     var head = document.getElementsByTagName('head')[0];
+     var style = document.createElement('LINK');
+     style.href = filename;
+     style.rel = 'stylesheet';
+     head.append(style);
+}

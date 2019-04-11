@@ -1,0 +1,19 @@
+*{
+    outline: 1px solid lime;
+}
+
+span{
+    outline: 1px solid red !important;
+}
+
+div{
+    outline: 1px solid orange!important;
+}
+
+img,svg{
+    outline: 1px solid hotpink !important;
+}
+
+input{
+    outline: 1px solid yellow !important;
+}

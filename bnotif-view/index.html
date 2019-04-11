@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/notif.css" type="text/css">
+    <title>Notification</title>
+  </head>
+<body onload="window.moveTo(16,16); fillContent()">
+
+<div id="main">
+    <div id="sidepanel">
+        <img src="../assets/icons/png/icon.png" draggable="false" id="img">
+    </div>
+
+    <span id="headercontent">Update Available</span>
+    <span id="bodycontent">A new build will be downloaded upon restart</span>
+    <div id="buttons">
+        <span class="uibtn" id="morebtn">More</span>
+        <span class="uibtn" id="closebtn" onclick="closeWindow()">Close</span>
+    </div>
+
+</div>
+
+
+<script src="notiflogic.js"></script>
+</body>
+</html>

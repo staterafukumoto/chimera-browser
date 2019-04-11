@@ -1,3 +1,7 @@
+*{
+    /* outline: 1px solid red; */
+}
+
 body{
     background: #343538;
     user-select: none;
@@ -615,7 +619,7 @@ webview{
     box-shadow: inset 0px 2px 0px 0px rgba(255,255,255,1);
     width: 100px;
     z-index: 40;
-    transition: 0.3s width ease, 0.3s left ease;
+    transition: 0.2s width ease, 0.2s left ease;
     pointer-events: none;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;

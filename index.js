@@ -92,14 +92,12 @@ function createWindow() {
       {
         label: 'View',
         submenu: [
-          // {role: 'reload'},
           {
             label: 'Reload',
             click () { win.webContents.send('refresh-tab') },
             accelerator: 'CmdOrCtrl+R',
           },
           {role: 'forcereload'},
-          // {role: 'toggledevtools'},
           {
             label: 'Tab Inspector',
             click () {win.webContents.send('tab-tools')} ,
@@ -109,6 +107,11 @@ function createWindow() {
             label: 'App Inspector',
             role: 'toggledevtools',
             accelerator: 'CmdOrCtrl+Shift+Alt+I',
+          },
+          {
+            label: 'Show UI Drawing Boxes',
+            click () { win.webContents.send('bound-box') },
+            accelerator: 'Alt+Shift+B',
           },
           {type: 'separator'},
           {role: 'resetzoom'},
@@ -164,6 +167,30 @@ function createWindow() {
     }
 }
 
+function notifWindow() {
+  // Create the browser window.
+  let ntfy = new BrowserWindow({
+      width: 400, 
+      height: 128,
+      resizable: false,
+      frame: false,
+      // backgroundColor: "#bb00bb",
+      transparent: true,
+      fullscreenable: false,
+      alwaysOnTop: true,
+      webPreferences: { 
+        experimentalFeatures: true,
+        nodeIntegration: true,
+        webviewTag: true,
+        'overlay-fullscreen-video': true,
+      },
+    })
+  // and load the app ui of the app.
+  ntfy.loadFile('bnotif-view/index.html')
+}
+
+//this line used for testing notification window
+// app.on('ready', notifWindow, console.timeEnd('main-ready'))
 app.on('ready', createWindow, console.timeEnd('main-ready'))
 
 app.on('window-all-closed', () =>
@@ -178,4 +205,8 @@ ipc.on('new-window', function (event, arg) {
 
 ipc.on('is-ready', function (event, arg) {
     console.timeEnd('render-ready') //the total time
+})
+
+ipc.on('runonmain', function (event, arg) {
+    eval(arg)
 })

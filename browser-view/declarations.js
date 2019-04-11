@@ -14,6 +14,7 @@ var useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (K
 var maximstate = false
 var panelIsOut = false
 var keepHistory = true
+var boundDebugState = false
 
 //array declarations
 var historyObject = new Array();
@@ -21,7 +22,7 @@ var bookmarkObject = new Array();
 
 //string declarations
 var appname = "Chimera"
-var vendor ="WAYOUTWARE"
+var vendor = "WAYOUTWARE"
 var urlsafevendor = vendor
 var secure_string = "This page is using HTTPS, meaning you have a secure connection to the site."
 var insecure_string = "This page is using HTTP and not HTTPS, and therefore isn't secure. Be careful inputting passwords or identifying information on this site."

@@ -425,7 +425,8 @@ function padZero(str, len) {
 
 function cleanSlate(){
     var amntClear = 25
-    createToast("Clearing " + amntClear +" history entries and restarting")
+    // createToast("Clearing " + amntClear +" history entries and restarting")
+    showNotification("Clean Slate","Clearing 25 history entries and restarting",2500)
     deleteFromHistory(amntClear)
     location.reload()
 }
@@ -454,4 +455,21 @@ function sanitiseText(input){
     //into the browser's ui that's not very good D:
     var s1 = input.replace("<","&lt;")
     return s1
+}
+
+function toggleDebug(){
+    if (boundDebugState == false){
+         var head = document.getElementsByTagName('head')[0]
+         var style = document.createElement('LINK')
+         style.href = "styles/debug.css"
+         style.rel = 'stylesheet'
+         style.id = "debug-chimera"
+         head.append(style);
+         window.boundDebugState = true
+         showNotification("Debug: Bounding ON","Showing bounding boxes, Press Alt+ShifT+B to disable",2500)
+    } else{
+         document.getElementById("debug-chimera").parentNode.removeChild(document.getElementById("debug-chimera"))
+         showNotification("Debug: Bounding OFF","Hiding bounding boxes, Press Alt+ShifT+B to enable",2500)
+         window.boundDebugState = false
+    }
 }

@@ -88,17 +88,15 @@
     <span class="menuitem" onclick="refreshActive(); hideMenu()"> Refresh <span class="kshortcut"> Ctrl + R </span> </span>
     <!-- <span class="menuitem" onclick="ipc.send('new-window')"> New Window <span class="kshortcut"> Ctrl + N </span> </span> -->
     <hr>
-    <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/bookmarks/index.html'); hideMenu()"> Library <span class="kshortcut"> Ctrl + H </span> </span>
+    <span class="menuitem" onclick="system('bookmarks'); hideMenu()"> Library <span class="kshortcut"> Ctrl + H </span> </span>
     <span class="menuitem" onclick="showBookmarkApplet(); hideMenu()"> Bookmark This Page <span class="kshortcut"> Ctrl + D </span> </span>
-    <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/settings/index.html'); hideMenu()"> Preferences <span class="kshortcut"> Alt + P </span></span>
-    <span class="menuitem disabledmnuitem"> Find in Page </span>
-    <span class="menuitem disabledmnuitem"> Forget </span>
+    <span class="menuitem" onclick="system('settings'); hideMenu()"> Preferences <span class="kshortcut"> Alt + P </span></span>
     <span class="menuitem" onclick="browserThemeSelect(); hideMenu()"> Toolbar Colour </span>
     <span class="menuitem" onclick="document.getElementsByClassName('activewbv')[0].openDevTools(); hideMenu()"> Tab Inspector <span class="kshortcut"> Ctrl + Shift + I </span> </span>
     <span class="menuitem" onclick="BrowserWindow.getFocusedWindow().openDevTools(); hideMenu()"> App Inspector <span class="kshortcut"> Ctrl + Shift + Alt + I </span> </span>
     <hr>
-    <span class="menuitem" onclick="makeNewTab('file://' + __dirname + '/about/index.html'); hideMenu()"> About </span>
-    <span class="menuitem" onclick="window.close()"> Close <span class="kshortcut"> Alt + F4 </span> </span>
+    <span class="menuitem" onclick="system('about'); hideMenu()"> About </span>
+    <span class="menuitem" onclick="runOnMain('app.quit()')"> Close <span class="kshortcut"> Alt + F4 </span> </span>
 
 </div>
 
@@ -131,6 +129,8 @@
 </div>
     
     <script src="processlink.js"></script>
+    <script src="notification.js"></script>
+    <script src="syslink.js"></script>
     <script src="keyboard.js"></script>
     <script src="declarations.js"></script>
     <script src="fluentdesign.js"></script>

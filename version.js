@@ -1,1 +1,1 @@
-const chimeraversion = "0.1.1"
+const chimeraversion = "0.1.2"
