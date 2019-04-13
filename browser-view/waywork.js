@@ -21,7 +21,7 @@
 
 window.wayworkversion = "1.0"
 window.generatedids = [];
-console.log("wayworkjs version: " + wayworkversion)
+console.log("%cwayworkjs version: " + wayworkversion, "font-size:12px;color: white; width: 100%; background: black; display: block;")
 
 function removeTag(taguuid) {
     var element = document.getElementById(taguuid);

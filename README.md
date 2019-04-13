@@ -1,5 +1,6 @@
 # Chimera Web Browser (work in progress)
 > <b> Raise your banner. </b>
+> <b> (also again please realise that this is a work in progress i'm working as fast i can) </b>
 ## How to build
 1. Listen to [this](https://www.youtube.com/watch?v=GDpmVUEjagg) in the background (always do this when building or compiling)
 2. [Download and install NodeJS onto your computer's disk](https://nodejs.org/en/)
