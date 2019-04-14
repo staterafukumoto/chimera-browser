@@ -91,7 +91,6 @@
     <span class="menuitem" onclick="system('bookmarks'); hideMenu()"> Library <span class="kshortcut"> Ctrl + H </span> </span>
     <span class="menuitem" onclick="showBookmarkApplet(); hideMenu()"> Bookmark This Page <span class="kshortcut"> Ctrl + D </span> </span>
     <span class="menuitem" onclick="system('settings'); hideMenu()"> Preferences <span class="kshortcut"> Alt + P </span></span>
-    <span class="menuitem" onclick="browserThemeSelect(); hideMenu()"> Toolbar Colour </span>
     <span class="menuitem" onclick="document.getElementsByClassName('activewbv')[0].openDevTools(); hideMenu()"> Tab Inspector <span class="kshortcut"> Ctrl + Shift + I </span> </span>
     <span class="menuitem" onclick="BrowserWindow.getFocusedWindow().openDevTools(); hideMenu()"> App Inspector <span class="kshortcut"> Ctrl + Shift + Alt + I </span> </span>
     <hr>
@@ -146,6 +145,7 @@
     <script src="dropdown.js"></script>
     <script src="../lang.js"></script>
     <script src="pagestatus.js"></script>
+    <script src="extensibility.js"></script>
     <script src="lastrun.js"></script>
 </body>
 </html>

@@ -123,3 +123,9 @@ function addCSS(filename){
      style.rel = 'stylesheet';
      head.append(style);
 }
+function addScript(filename){
+     var body = document.getElementsByTagName('body')[0];
+     var script = document.createElement('script');
+     script.src = filename;
+     body.append(script);
+}
