@@ -1,5 +1,5 @@
 body{
-    background: #202020;
+    background: #111;
     user-select: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -9,7 +9,7 @@ body{
   width: 500px;
   top: 50px;
   bottom: 10%;
-  background: #343538;
+  background: #202020;
   /* border-radius: 16px; */
   align-self: center;
   left: calc(50% - 251px);
@@ -46,7 +46,7 @@ body{
 }
 
 #lowercontent{
-  background: #242528;
+  background: #141518;
   /* color: white; */
   position: absolute;
   top: 128px;

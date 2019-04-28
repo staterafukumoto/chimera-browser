@@ -31,3 +31,7 @@ FluentRevealEffect.applyEffect(".uibtn", {
     gradientSize: 25,
     clickEffect: true
 })
+
+function runOnMain(code){ // this is like a little dangerous so use sparingly
+    ipc.send('runonmain',code)
+}

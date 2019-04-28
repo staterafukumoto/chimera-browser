@@ -14,7 +14,8 @@ var useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (K
 
 //directory declarations
 if (process.platform == "win32"){
-    window.extensions_directory = 'C:/chimera-extensions'
+    window.extensions_directory = 'C:/chimera/extensions'
+    window.chimera_directory = 'C:/chimera'
 } else if (process.platform == "linux"){
     window.extensions_directory = '\\usr\\share\\chimera-extensions\\'
 }
@@ -29,6 +30,7 @@ var maximstate = false
 var panelIsOut = false
 var keepHistory = true
 var boundDebugState = false
+var loadedExtensions = ""
 
 //array declarations - if we need something to put history / bookmarks in
 var historyObject = new Array();
@@ -45,3 +47,7 @@ var console_welcome_string = "Running " + appname
 var console_warn_string = "This is a window intended for tweakers and devs ONLY! \nIt bestows you control over the entire browser and ALL your data."
 var console_warn_string_ext = "Whatever code you put here has access to EVERYTHING.\nSo don't go pasting something in here willy nilly."
 var console_version_m = "Version: " + chimeraversion
+var ext_message = "Your installed extensions have been modified and you need to restart to apply the changes."
+var secure_message = "<i class='material-icons urlbar-i'>lock</i> Secure &nbsp;"
+var local_message = "<i class='material-icons urlbar-i'>code</i> File &nbsp;"
+var insecure_message = "<i class='material-icons urlbar-i'>error</i> Insecure &nbsp;"

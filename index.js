@@ -6,6 +6,7 @@ const { app, BrowserWindow } = require('electron')
 const ipc = require('electron').ipcMain
 const electron = require('electron');
 const Menu = electron.Menu;
+const { systemPreferences } = require('electron')
 
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -210,3 +211,13 @@ ipc.on('is-ready', function (event, arg) {
 ipc.on('runonmain', function (event, arg) {
     eval(arg)
 })
+
+function systemColour(){
+  if (process.platform == "win32"){
+    return systemPreferences.getAccentColor()
+  } else{
+    return "#cecece"
+  }
+}
+
+console.log(systemColour())

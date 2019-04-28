@@ -4,9 +4,15 @@ FluentRevealEffect.applyEffect(".ui-btn", {
     clickEffect: true
 })
 
+FluentRevealEffect.applyEffect(".close", {
+	lightColor: "rgba(255,22,22,0.8)",
+    gradientSize: 75,
+    clickEffect: true
+})
+
 FluentRevealEffect.applyEffect("#newtabbutton", {
 	lightColor: "rgba(255,255,255,0.2)",
-    gradientSize: 25,
+    gradientSize: 75,
     clickEffect: true
 })
 
@@ -26,6 +32,12 @@ FluentRevealEffect.applyEffect("#urlbar", {
 	lightColor: "rgba(255,255,255,0.2)",
     gradientSize: 250,
     // clickEffect: true
+})
+
+FluentRevealEffect.applyEffect("#notsecure", {
+	lightColor: "rgba(255,255,255,0.2)",
+    gradientSize: 80,
+    clickEffect: true
 })
 
 FluentRevealEffect.applyEffect(".bookmarkinput", {

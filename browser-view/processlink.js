@@ -42,6 +42,7 @@ ipc.on('go-fwd', function(arg){
 
 ipc.on('url-focus', function(arg){
     document.getElementById("urlbar").focus()
+    document.getElementById("urlbar").select()
 })
 
 ipc.on('tab-tools', function(arg){

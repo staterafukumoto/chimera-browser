@@ -27,5 +27,5 @@ function showTime(){
     setTimeout(showTime, 1000);
     
 }
-twentyFourHour = false
+twentyFourHour = true
 showTime();

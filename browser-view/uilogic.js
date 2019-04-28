@@ -1,23 +1,3 @@
-function browserTheme(colour){
-    //change the colour of the browser
-    if (colour == "default"){
-        document.getElementById("titlebar-region").style.background = "#343538"
-        document.getElementById("tabindic").style.background = "#343538"
-        document.getElementById("inverter").style.display = "none"
-    } else{
-        if (lightOrDark(colour) == "dark"){
-            document.getElementById("titlebar-region").style.background = colour
-            document.getElementById("tabindic").style.background = colour
-            document.getElementById("inverter").style.display = "none"
-        } else{
-            document.getElementById("titlebar-region").style.background = invertColor(colour)
-            document.getElementById("tabindic").style.background = invertColor(colour)
-            document.getElementById("inverter").style.display = "block"
-        }
-    }
-    localStorage["themeColor"] = colour
-}
-
 function webViewNightMode(arg){
     //true or false
     if (arg == true){
@@ -47,16 +27,19 @@ function makeNewTabLabel(uuid){
     //make the tab favicon
     var ntabicon = document.createElement("img")
     ntabicon.id = "icon" + uuid
-    ntabicon.src = "../assets/icons/win/icon.ico"
+    ntabicon.src = "../assets/icons/png/paper.png"
+    // ntabicon.src = "../assets/icons/win/icon.ico"
     ntabicon.classList = "tabimg"
     ntabicon.draggable = false
     ntabicon.onclick  = showThisWebview.bind(ntabicon, uuid);
+    ntabicon.onerror = function() {this.src = "../assets/icons/png/paper.png"};
     //make the close button
     var tclose = document.createElement("span")
     tclose.id = "close" + uuid
     tclose.innerHTML = "close"
     tclose.onclick  = closeTab.bind(tclose, uuid);
     tclose.classList = "tabclosebtn"
+    tclose.title = "Close Tab"
     //append to tabregion
     ntab.appendChild(ntabinner)
     ntab.appendChild(ntabicon)
@@ -100,14 +83,10 @@ function generateActiveWbv(uuid,url){ //this generates the frame itself
         document.getElementById("icon" + uuid).src = e.favicons[0]
     })
     document.getElementById(uuid).addEventListener('enter-html-full-screen', function(){ //broken
-        console.log("entering html-full-screen")
-        fullscreen("enter")
-        // electron.remote.getCurrentWindow().setFullScreen(true)
+        fsLayout("fs")
     })
-    document.getElementById(uuid).addEventListener('exit-html-full-screen', function(){ //also broken
-        console.log("exiting html-full-screen")
-        fullscreen("exit")
-        // electron.remote.getCurrentWindow().setFullScreen(false)
+    document.getElementById(uuid).addEventListener('leave-html-full-screen', function(){ //also broken
+        fsLayout("nfs")
     })
     document.getElementById(uuid).addEventListener('did-finish-load', function(){ //push the webview's data to the history object
         appendToHistory(document.getElementById(uuid).getTitle(), document.getElementById(uuid).getURL())
@@ -207,9 +186,7 @@ function loadingActivity(){
 window.setInterval(loadingActivity,50)
 
 function fullscreen(){
-    //figure out why electron won't fucking fullscreen later
-    //but honestly i just want sleep
-    //update. still tired. i'm going to go to bed, goodnight whoever's reading this.
+    
     electron.remote.getCurrentWindow().maximize()
 }
 
@@ -227,7 +204,8 @@ function showMenu(){
     document.getElementById("menu").style.top = "72px"
     document.getElementById("menu").style.opacity = "1"
     document.getElementById("menu").style.pointerEvents = "auto"
-    document.getElementById("mnubutton").style.color = "#adadad"
+    document.getElementById("mnubutton").style.filter = "invert(0.5)"
+    // document.getElementById("mnubutton").style.color = "#adadad"
     document.getElementById("mnubutton").onclick = hideMenu
 }
 
@@ -237,7 +215,8 @@ function hideMenu(){
     document.getElementById("menu").style.top = "0px"
     document.getElementById("menu").style.opacity = "0"
     document.getElementById("menu").style.pointerEvents = "none"
-    document.getElementById("mnubutton").style.color = "white"
+    document.getElementById("mnubutton").style.filter = "invert(0)"
+    // document.getElementById("mnubutton").style.color = "white"
     document.getElementById("mnubutton").onclick = showMenu
 }
 
@@ -252,23 +231,47 @@ function updateAppTitle(){
     }
 }
 
+// function writeSecureStatusToUserInterface(){
+//     if (getSecureStatus() == "INSECURE"){
+//         urlbar.style.paddingLeft = "130px"
+//         urlbar.style.width = "calc(100% - 350px)"
+//         document.getElementById("notsecure").style.display = "inline"
+//         document.getElementById("secure").style.display = "none"
+//         document.getElementById("urlbar").title = insecure_string
+//     } else if (getSecureStatus() == "LOCAL"){
+//         urlbar.style.paddingLeft = "20px"
+//         urlbar.style.width = "calc(100% - 240px)"
+//         document.getElementById("notsecure").style.display = "none"
+//         document.getElementById("urlbar").title = local_string
+//     } else if(getSecureStatus() == "SECURE"){
+//         urlbar.style.paddingLeft = "20px"
+//         urlbar.style.width = "calc(100% - 240px)"
+//         document.getElementById("notsecure").style.display = "none"
+//         document.getElementById("secure").style.display = "inline"
+//         document.getElementById("urlbar").title = secure_string
+//     }
+// }
+
 function writeSecureStatusToUserInterface(){
+    var output = document.getElementById("notsecure")
+    var input = getSecureStatus()
+    var urlbar = document.getElementById("urlbar")
     if (getSecureStatus() == "INSECURE"){
-        urlbar.style.paddingLeft = "130px"
-        urlbar.style.width = "calc(100% - 350px)"
-        document.getElementById("notsecure").style.display = "inline"
-        document.getElementById("urlbar").title = insecure_string
-    } else if (getSecureStatus() == "LOCAL"){
-        urlbar.style.paddingLeft = "20px"
-        urlbar.style.width = "calc(100% - 240px)"
-        document.getElementById("notsecure").style.display = "none"
-        document.getElementById("urlbar").title = local_string
+        output.title = insecure_string
+        output.innerHTML = insecure_message
+        urlbar.style.width = "calc(100% - 330px)"
+        urlbar.style.paddingLeft = "110px"
     } else if(getSecureStatus() == "SECURE"){
-        urlbar.style.paddingLeft = "20px"
-        urlbar.style.width = "calc(100% - 240px)"
-        document.getElementById("notsecure").style.display = "none"
-        document.getElementById("urlbar").title = secure_string
-    }
+        output.title = secure_string
+        output.innerHTML = secure_message
+        urlbar.style.width = "calc(100% - 320px)"
+        urlbar.style.paddingLeft = "100px"
+    } else if (getSecureStatus() == "LOCAL"){
+        output.title = local_string
+        output.innerHTML = local_message
+        urlbar.style.width = "calc(100% - 295px)" //this is such a godawful system i need to fix 
+        urlbar.style.paddingLeft = "75px" //        this is seriously getting out of hand
+    }  //                                           oof.  ouch.
 }
 
 window.setInterval(updateAppTitle, 60)
@@ -471,5 +474,29 @@ function toggleDebug(){
          document.getElementById("debug-chimera").parentNode.removeChild(document.getElementById("debug-chimera"))
          showNotification("Debug: Bounding OFF","Hiding bounding boxes, Press Alt+ShifT+B to enable",2500)
          window.boundDebugState = false
+    }
+}
+
+function setAWMaximState(input){
+    //accepts "maximised" or "windowed"
+    if (input == "maximised"){
+        document.getElementById("allwrapper").classList = "awmaxim"
+    } else if (input == "windowed"){
+        document.getElementById("allwrapper").classList = "awwindowed"
+    } else if(input == "fullscreen"){
+        document.getElementById("allwrapper").classList = "awmaxim"
+    }else{
+        throw "unaccepted_input at setAWMaximState"
+    }
+}
+
+function fsLayout(input){
+    //accepts "fs" or "nfs"
+    if (input == "fs"){
+        document.getElementById("titlebar-region").style.top = "-69px" //nice
+        document.getElementById("webwrapper").style.top = "0px"
+    } else if (input == "nfs"){
+        document.getElementById("titlebar-region").style.top = "0px"
+        document.getElementById("webwrapper").style.top = "68px"
     }
 }

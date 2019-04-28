@@ -8,6 +8,8 @@
 </head>
 <body onload='document.getElementById("loadmask").style.opacity = "0"; document.getElementById("loadmask").style.pointerEvents = "none"; ipc.send("is-ready")'>
 
+<div id="allwrapper" class="awmaxim">
+
 <div class="backdrop" id="backdropmenu" onclick="hideMenu()"></div>
 <div class="backdrop" id="backdropbookmarks" onclick="hideBookmarkApplet()"></div>
 <!-- <div class="backdrop" id="backdropurlbar" onclick="hideDropDown(); document.getElementById('dropdownwrapper').style.display = 'none'"></div> -->
@@ -38,7 +40,7 @@
 
 <div id="newtabbutton" onclick="makeNewTab(); document.getElementById('urlbar').focus(); document.getElementById('urlbar').value = ''"> + </div>
 
-<span id="notsecure"> &#9888; Not Secure &nbsp;</span>
+<span id="notsecure"></span>
 
 <input type="text" id="urlbar" placeholder="Search the Web or Type a URL" onclick="urlBarSelect(); //showDropDown();">
 
@@ -126,6 +128,7 @@
 <div id="loadmask">
     <!-- <img id="loadimg" src="img/icon.png" draggable="false"> -->
 </div>
+</div> <!--all wrapper -->
     <script src="init.js"></script>
     <script src="../version.js"></script>
     <script src="processlink.js"></script>
