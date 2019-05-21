@@ -18,21 +18,23 @@ function makeNewTabLabel(uuid){
     ntab.id = "tab" + uuid
     ntab.innerHTML = " "
     ntab.classList = "activetab tab"
+
     //make the tab text
     var ntabinner = document.createElement("span")
     ntabinner.id = "inner" + uuid
     ntabinner.innerHTML = "New Tab"
     ntabinner.classList = "tabtext"
     ntabinner.onclick  = showThisWebview.bind(ntabinner, uuid);
+
     //make the tab favicon
     var ntabicon = document.createElement("img")
     ntabicon.id = "icon" + uuid
     ntabicon.src = "../assets/icons/png/paper.png"
-    // ntabicon.src = "../assets/icons/win/icon.ico"
     ntabicon.classList = "tabimg"
     ntabicon.draggable = false
     ntabicon.onclick  = showThisWebview.bind(ntabicon, uuid);
-    ntabicon.onerror = function() {this.src = "../assets/icons/png/paper.png"};
+    ntabicon.onerror = function() {this.src = "../assets/icons/png/paper.png"} //this is the paper
+
     //make the close button
     var tclose = document.createElement("span")
     tclose.id = "close" + uuid
@@ -40,6 +42,7 @@ function makeNewTabLabel(uuid){
     tclose.onclick  = closeTab.bind(tclose, uuid);
     tclose.classList = "tabclosebtn"
     tclose.title = "Close Tab"
+    
     //append to tabregion
     ntab.appendChild(ntabinner)
     ntab.appendChild(ntabicon)
@@ -47,11 +50,18 @@ function makeNewTabLabel(uuid){
     document.getElementById("tabregion").appendChild(ntab)
 }
 
-function generateActiveWbv(uuid,url){ //this generates the frame itself
+function generateActiveWbv(uuid,url,elevation){ //this generates the frame itself
     var wbv = document.createElement("WEBVIEW")
     wbv.classList = "activewbv"
     // wbv.useragent = useragent
-    wbv.preload = "browserpreload.js"
+    if (elevation == true){
+        wbv.partition = elevpartition
+        wbv.nodeintegration = true
+        wbv.preload = ""
+    } else{
+        wbv.partition = regupartition
+        wbv.preload = preloadFile
+    }
     if (typeof url === "undefined"){
         wbv.src = homepage
     } else{
@@ -71,42 +81,64 @@ function generateActiveWbv(uuid,url){ //this generates the frame itself
         if (e.errorCode != -3){
             document.getElementById(uuid).stop()
             window.setTimeout(function(){
-                localStorage["tempErrorCode"] = e.errorDescription
-                localStorage["tempErrorURL"] = document.getElementById(uuid).getURL()
+                var er = e.errorDescription
+                var url = document.getElementById(uuid).getURL()
                 document.getElementById(uuid).stop()
                 document.getElementById(uuid).src = "error/index.html"
+                document.getElementById(uuid).addEventListener('did-finish-load',soManyLayers)
+                function soManyLayers(){
+                    function tellErrorPage(){
+                        var es =  "fillErrorCode('" + er.toString() + "','" + url.toString() + "')"
+                        return es.toString()
+                    }
+                    executeRemoteUUID(uuid, tellErrorPage())
+                    document.getElementById(uuid).removeEventListener('did-finish-load',soManyLayers)
+                }
             },250)
-
         }
     })
     document.getElementById(uuid).addEventListener('page-favicon-updated', (e) => { //update favicon
         document.getElementById("icon" + uuid).src = e.favicons[0]
     })
-    document.getElementById(uuid).addEventListener('enter-html-full-screen', function(){ //broken
-        fsLayout("fs")
+    document.getElementById(uuid).addEventListener('enter-html-full-screen', function(){
+        fsLayout("fs") //set layout to fullscreen
     })
-    document.getElementById(uuid).addEventListener('leave-html-full-screen', function(){ //also broken
-        fsLayout("nfs")
+    document.getElementById(uuid).addEventListener('leave-html-full-screen', function(){ 
+        fsLayout("nfs") //set layout to not fullscreen
     })
     document.getElementById(uuid).addEventListener('did-finish-load', function(){ //push the webview's data to the history object
         appendToHistory(document.getElementById(uuid).getTitle(), document.getElementById(uuid).getURL())
     })
-    document.getElementById(uuid).addEventListener('page-title-updated', function(){ //push the webview's data to the history object
+    document.getElementById(uuid).addEventListener('page-title-updated', function(){ //push the webview's data to the history object juuuust to be safe
         setTabTitle(uuid, document.getElementById(uuid).getTitle())
     })
-  
-   
+    document.getElementById(uuid).addEventListener('close', function(){ //let the tab close itself
+        closeTab(uuid)
+    })
+    document.getElementById(uuid).addEventListener('crashed', function(){ //let the tab close itself
+        simulatePageError() //replace with actual crash later
+    })
 }
 
 
-function makeNewTab(url){
+function makeNewTab(url,elev){
+    // first argument is the url, second is the elevation status as a boolean value, though it is assumed false if not defined.
+    // a url is required to make an elevated tab 
     var uuid = uuidv4()
     var elements = document.getElementsByClassName('activewbv')
     while(elements.length > 0){
         elements[0].classList.remove('activewbv');
     }
+    if(elev == false || elev == undefined){
+        //unelevated conditions
+        generateActiveWbv(uuid,url,false)
+    } else if (elev == true){
+        //elevated conditions
+        generateActiveWbv(uuid,url,true)
+    } else{
+        throw "INVALID_TAB_ELEVATION"
+    }
     makeNewTabLabel(uuid)
-    generateActiveWbv(uuid,url)
 }
 
 function uuidv4() {
@@ -118,6 +150,7 @@ function uuidv4() {
 // btn.ondblclick  = warnUser.bind(btn, userid,username);
 
 function showThisWebview(uuid){
+    disableUrlForElevatedtabs()
     var elements = document.getElementsByClassName('activewbv')
     while(elements.length > 0){
         elements[0].classList.remove('activewbv');
@@ -156,14 +189,21 @@ function closeTab(uuid){
     }
     if (getTabQuantity() == 1){ //this is the last straw. er i mean tab.
         window.close()
-    } else{ //this being an else statement probably speeds something up
+    } else{
+        //tab close routine
         if (flag == 1){
             //temporary solution, aim to select last tab in tab list in the future.
             document.getElementsByClassName("tab")[0].firstElementChild.click()
-        } else{} //don't switch tabs if the tab that's 
+        } else{} 
+        //don't switch tabs if the tab that's 
         //being closed isn't the focused tab
+        document.getElementById("tab" + uuid).style.transformOrigin = "bottom left"
+        document.getElementById("tab" + uuid).style.opacity = "0"
+        document.getElementById("tab" + uuid).style.transform = "scale(1,0)"
         removeTag(uuid)
-        removeTag("tab" + uuid)
+        window.setTimeout(function(){
+            removeTag("tab" + uuid)
+        },200)
     }
 }
 
@@ -231,27 +271,6 @@ function updateAppTitle(){
     }
 }
 
-// function writeSecureStatusToUserInterface(){
-//     if (getSecureStatus() == "INSECURE"){
-//         urlbar.style.paddingLeft = "130px"
-//         urlbar.style.width = "calc(100% - 350px)"
-//         document.getElementById("notsecure").style.display = "inline"
-//         document.getElementById("secure").style.display = "none"
-//         document.getElementById("urlbar").title = insecure_string
-//     } else if (getSecureStatus() == "LOCAL"){
-//         urlbar.style.paddingLeft = "20px"
-//         urlbar.style.width = "calc(100% - 240px)"
-//         document.getElementById("notsecure").style.display = "none"
-//         document.getElementById("urlbar").title = local_string
-//     } else if(getSecureStatus() == "SECURE"){
-//         urlbar.style.paddingLeft = "20px"
-//         urlbar.style.width = "calc(100% - 240px)"
-//         document.getElementById("notsecure").style.display = "none"
-//         document.getElementById("secure").style.display = "inline"
-//         document.getElementById("urlbar").title = secure_string
-//     }
-// }
-
 function writeSecureStatusToUserInterface(){
     var output = document.getElementById("notsecure")
     var input = getSecureStatus()
@@ -259,17 +278,22 @@ function writeSecureStatusToUserInterface(){
     if (getSecureStatus() == "INSECURE"){
         output.title = insecure_string
         output.innerHTML = insecure_message
-        urlbar.style.width = "calc(100% - 330px)"
+        urlbar.style.width = "calc(100% - 298px)"
         urlbar.style.paddingLeft = "110px"
     } else if(getSecureStatus() == "SECURE"){
         output.title = secure_string
         output.innerHTML = secure_message
-        urlbar.style.width = "calc(100% - 320px)"
+        urlbar.style.width = "calc(100% - 288px)"
+        urlbar.style.paddingLeft = "100px"
+    } else if(getSecureStatus() == "LOCAL" && isCurrentTabElevated() == true){
+        output.title = elevated_string
+        output.innerHTML = elevated_message
+        urlbar.style.width = "calc(100% - 288px)"
         urlbar.style.paddingLeft = "100px"
     } else if (getSecureStatus() == "LOCAL"){
         output.title = local_string
         output.innerHTML = local_message
-        urlbar.style.width = "calc(100% - 295px)" //this is such a godawful system i need to fix 
+        urlbar.style.width = "calc(100% - 263px)" //this is such a godawful system i need to fix 
         urlbar.style.paddingLeft = "75px" //        this is seriously getting out of hand
     }  //                                           oof.  ouch.
 }
@@ -357,50 +381,6 @@ function setIndicatorPos(){
 
 window.setInterval(setIndicatorPos, 40)
 
-//THANK YOU STACKOVERFLOW
-function lightOrDark(color) {
-    // Variables for red, green, blue values
-    var r, g, b, hsp;
-    
-    // Check the format of the color, HEX or RGB?
-    if (color.match(/^rgb/)) {
-
-        // If HEX --> store the red, green, blue values in separate variables
-        color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
-        
-        r = color[1];
-        g = color[2];
-        b = color[3];
-    } 
-    else {
-        
-        // If RGB --> Convert it to HEX: http://gist.github.com/983661
-        color = +("0x" + color.slice(1).replace( 
-        color.length < 5 && /./g, '$&$&'));
-
-        r = color >> 16;
-        g = color >> 8 & 255;
-        b = color & 255;
-    }
-    
-    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
-    hsp = Math.sqrt(
-    0.299 * (r * r) +
-    0.587 * (g * g) +
-    0.114 * (b * b)
-    );
-
-    // Using the HSP value, determine whether the color is light or dark
-    if (hsp>127.5) {
-
-        return 'light';
-    } 
-    else {
-
-        return 'dark';
-    }
-}
-
 function invertColor(hex) {
     if (hex.indexOf('#') === 0) {
         hex = hex.slice(1);
@@ -469,10 +449,10 @@ function toggleDebug(){
          style.id = "debug-chimera"
          head.append(style);
          window.boundDebugState = true
-         showNotification("Debug: Bounding ON","Showing bounding boxes, Press Alt+ShifT+B to disable",2500)
+        //  showNotification("Debug: Bounding ON","Showing bounding boxes, Press Alt+ShifT+B to disable",2500)
     } else{
          document.getElementById("debug-chimera").parentNode.removeChild(document.getElementById("debug-chimera"))
-         showNotification("Debug: Bounding OFF","Hiding bounding boxes, Press Alt+ShifT+B to enable",2500)
+        //  showNotification("Debug: Bounding OFF","Hiding bounding boxes, Press Alt+ShifT+B to enable",2500)
          window.boundDebugState = false
     }
 }
@@ -499,4 +479,34 @@ function fsLayout(input){
         document.getElementById("titlebar-region").style.top = "0px"
         document.getElementById("webwrapper").style.top = "68px"
     }
+}
+
+function updateZoomCounterDisplay(){
+    var int = Math.round(document.getElementsByClassName("activewbv")[0].getZoomFactor()*100)
+    document.getElementById("zoomdisplay").innerHTML = int + "%"
+}
+
+window.setInterval(updateZoomCounterDisplay,66)
+
+function zoomIn(){
+    var updatedCount = document.getElementsByClassName("activewbv")[0].getZoomFactor() + 0.25
+    document.getElementsByClassName("activewbv")[0].setZoomFactor(updatedCount)
+}
+
+function zoomOut(){
+    var updatedCount = document.getElementsByClassName("activewbv")[0].getZoomFactor() - 0.25
+    document.getElementsByClassName("activewbv")[0].setZoomFactor(updatedCount)
+}
+
+function zoomDefault(){
+    document.getElementsByClassName("activewbv")[0].setZoomFactor(1)
+}
+
+function printPage(){
+    document.getElementsByClassName("activewbv")[0].print()
+}
+
+
+function clickFirstTab(){
+    document.getElementsByClassName("tab")[0].firstElementChild.click()
 }

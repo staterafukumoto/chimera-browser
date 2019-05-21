@@ -40,9 +40,11 @@
 
 <div id="newtabbutton" onclick="makeNewTab(); document.getElementById('urlbar').focus(); document.getElementById('urlbar').value = ''"> + </div>
 
-<span id="notsecure"></span>
+<div id="urloverall">
+    <span id="notsecure"></span>
+    <input type="text" id="urlbar" placeholder="Search the Web or Type a URL" onclick="urlBarSelect(); //showDropDown();">
+</div>
 
-<input type="text" id="urlbar" placeholder="Search the Web or Type a URL" onclick="urlBarSelect(); //showDropDown();">
 
 <div id="navbuttons">
     <span id="backbutton" class="material-icons ubarnavbtn" onclick="goBackActive()">arrow_back</span>
@@ -51,8 +53,8 @@
 </div>
 
 <div id="endingbuttons">
-    <span id="backbutton" class="material-icons ubarnavbtn" onclick="goTo(homepage)">home</span>
-    <span id="mnubutton" class="material-icons ubarnavbtn" onclick="showMenu()">menu</span>
+    <!-- <span id="backbutton" class="material-icons ubarnavbtn" onclick="goTo(homepage)">home</span> -->
+    <span id="mnubutton" class="material-icons ubarnavbtn" onclick="showMenu()">more_horiz</span>
 </div>
 
 <div id="loaderwrapper">
@@ -84,14 +86,22 @@
 </div>
 
 <div id="menu" style="opacity: 0;">
+    <div id="zoomcontrols">
+        <span id="zoomout" class="zcontrol material-icons" onclick="zoomOut()" title="Zoom Out">remove</span>
+        <span id="zoomdisplay">  </span>
+        <span id="zoomin" class="zcontrol material-icons" onclick="zoomIn()" title="Zoom In">add</span>
+        <span id="zoomreset" class="zcontrol zcontrolsecondary material-icons" onclick="zoomDefault()" title="Reset zoom to 100%">pageview</span>
+    </div>
     <span class="menuitem" onclick="makeNewTab(); hideMenu()"> New Tab <span class="kshortcut"> Ctrl + T </span> </span>
     <span class="menuitem" onclick="closeCurrentTab(); hideMenu()"> Close Tab <span class="kshortcut"> Ctrl + W </span> </span>
     <span class="menuitem" onclick="cleanSlate(); hideMenu()"> Clean Slate <span class="kshortcut"> Ctrl + Alt + Q </span> </span>
-    <span class="menuitem" onclick="refreshActive(); hideMenu()"> Refresh <span class="kshortcut"> Ctrl + R </span> </span>
+    <span class="menuitem" onclick="goTo(homepage); hideMenu()"> Homepage <span class="kshortcut"> Alt + H </span> </span>
+    <!-- <span class="menuitem" onclick="refreshActive(); hideMenu()"> Refresh <span class="kshortcut"> Ctrl + R </span> </span> -->
     <!-- <span class="menuitem" onclick="ipc.send('new-window')"> New Window <span class="kshortcut"> Ctrl + N </span> </span> -->
     <hr>
     <span class="menuitem" onclick="system('bookmarks'); hideMenu()"> Library <span class="kshortcut"> Ctrl + H </span> </span>
     <span class="menuitem" onclick="showBookmarkApplet(); hideMenu()"> Bookmark This Page <span class="kshortcut"> Ctrl + D </span> </span>
+    <span class="menuitem" onclick="printPage(); hideMenu()"> Print <span class="kshortcut"> Ctrl + P </span> </span>
     <span class="menuitem" onclick="system('settings'); hideMenu()"> Preferences <span class="kshortcut"> Alt + P </span></span>
     <span class="menuitem" onclick="document.getElementsByClassName('activewbv')[0].openDevTools(); hideMenu()"> Tab Inspector <span class="kshortcut"> Ctrl + Shift + I </span> </span>
     <span class="menuitem" onclick="BrowserWindow.getFocusedWindow().openDevTools(); hideMenu()"> App Inspector <span class="kshortcut"> Ctrl + Shift + Alt + I </span> </span>
@@ -149,6 +159,7 @@
     <script src="../lang.js"></script>
     <script src="pagestatus.js"></script>
     <script src="extensibility.js"></script>
+    <script src="ext-api.js"></script>
     <script src="lastrun.js"></script>
 </body>
 </html>

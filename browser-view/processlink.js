@@ -57,6 +57,18 @@ ipc.on('bound-box', function(arg){
     toggleDebug()
 })
 
+ipc.on('zoom-in', function(arg){
+    zoomIn()
+})
+
+ipc.on('zoom-out', function(arg){
+    zoomOut()
+})
+
+ipc.on('zoom-reset', function(arg){
+    zoomDefault()
+})
+
 function runOnMain(code){ // this is like a little dangerous so use sparingly
     ipc.send('runonmain',code)
 }

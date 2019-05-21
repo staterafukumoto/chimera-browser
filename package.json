@@ -4,15 +4,14 @@
   "description": "open source electron-based web browser",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "rebuild": "clear && electron-rebuild",
     "buildwin": "electron-packager . Chimera --overwrite --asar=true --platform=win32 --arch=x64 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds ",
     "buildwin32": "electron-packager . Chimera --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds ",
-    "buildlinux": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds --version-string.ProductName=\"Chimera\"",
-    "buildlinux32": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=ia32 --icon=assets/icons/png/icon.png --prune=true --out=release-builds --version-string.ProductName=\"Chimera\"",
-    "buildlinuxarm": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=arm64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds --version-string.ProductName=\"Chimera\"",
-    "buildlinuxarm32": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=armv7l --icon=assets/icons/png/icon.png --prune=true --out=release-builds --version-string.ProductName=\"Chimera\""
+    "buildlinux": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
+    "buildlinux32": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=ia32 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
+    "buildlinuxarm": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=arm64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
+    "buildlinuxarm32": "electron-packager . Chimera --overwrite --asar=true --platform=linux --arch=armv7l --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
   },
   "repository": {
     "type": "git",
@@ -30,10 +29,14 @@
   "dependencies": {
     "electron-prompt": "^1.3.0",
     "electron-rebuild": "^1.8.4",
-    "fluent-reveal-effect": "^1.0.0"
+    "electron-settings": "^3.2.0",
+    "electron-winstaller": "^3.0.4",
+    "fluent-reveal-effect": "^1.0.0",
+    "node-gyp": "^4.0.0",
+    "rebuild": "^0.1.2"
   },
   "devDependencies": {
-    "electron": "^5.0.0",
+    "electron": "6.0.0-beta.3",
     "electron-packager": "^13.1.1"
   }
 }

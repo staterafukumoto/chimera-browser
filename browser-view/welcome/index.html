@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title id="apptitle">Welcome</title>
+    <link href="../styles/gicons1.css" rel="stylesheet">
+    <link href="welcome.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../../assets/icons/win/icon.ico">
+</head>
+<body>
+    
+<div id="card">
+        <!-- content one -->
+        <div id="contentone" class="subcard activesubcard">
+            <center><span class="header"> Please read and agree to the Mozilla Public License to continue</span></center>
+            <iframe src="../../mpl.html" id="license"></iframe>
+            <div class="standardbtncontainer">
+                    <span class="button negative" onmouseenter="showElem('noinner')" onmouseleave="hideElem('noinner')"> 
+                        <i class="material-icons">close</i> 
+                        <span id="noinner" class="inner negativeBG"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I Disagree </span> 
+                    </span>
+                    <span class="button positive" onmouseenter="showElem('yeinner')" onmouseleave="hideElem('yeinner')"> 
+                        <i class="material-icons">check</i> 
+                        <span id="yeinner" class="inner positiveBG"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  I Agree </span> 
+                    </span>
+            </div>
+        </div>
+
+        <!-- content two -->
+        <div id="contenttwo" class="subcard">
+            thank you
+        </div>
+</div>
+    
+    
+<div id="backdrop">
+        <img id="branding" src="../../assets/ch-wordmark.png" draggable="false">
+        <img id="entlogo" src="../../assets/wa-wordmark_mono.png" draggable="false">
+</div>
+
+<div id="bgbody"></div>
+<script src="welcomelogic.js"></script>
+<script src="slides.js"></script>
+</body>

@@ -8,6 +8,8 @@ const electron = require('electron');
 const Menu = electron.Menu;
 const { systemPreferences } = require('electron')
 
+// app.disableHardwareAcceleration()
+
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -21,9 +23,9 @@ function createWindow() {
       width: 1154, 
       height: 720,
       minWidth: 550,
-      minHeight: 590,
+      minHeight: 80,
       frame: false,
-      backgroundColor: "#343538",
+      backgroundColor: "#000000",
       fullscreenable: true,
       plugins: true,
       webPreferences: { 
@@ -114,8 +116,22 @@ function createWindow() {
             click () { win.webContents.send('bound-box') },
             accelerator: 'Alt+Shift+B',
           },
+          {
+            label: 'Zoom In',
+            click () { win.webContents.send('zoom-in') },
+            accelerator: 'Control+=',
+          },
+          {
+            label: 'Zoom Out',
+            click () { win.webContents.send('zoom-out') },
+            accelerator: 'Control+Minus',
+          },
+          {
+            label: 'Reset Zoom to Default',
+            click () { win.webContents.send('zoom-reset') },
+            accelerator: 'Control+0',
+          },
           {type: 'separator'},
-          {role: 'resetzoom'},
           {role: 'zoomin'},
           {role: 'zoomout'},
           {type: 'separator'},

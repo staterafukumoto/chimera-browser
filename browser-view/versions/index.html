@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title id="apptitle">Versions</title>
+    <link href="../styles/gicons1.css" rel="stylesheet">
+    <link href="versions.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../../assets/icons/win/icon.ico">
+</head>
+<body onload="fillData()">
+<div id="headerbar">
+<center>
+    <img src="../../assets/ch-wordmark.png" draggable="false" class="headerimg">
+</center>
+</div>
+
+<div id="content">
+    <hr>
+    <b> Chimera Feature Version </b> &nbsp; <span id="selfver"></span> <br> <br>
+    <hr>
+    <b> Chromium </b> &nbsp; <span id="chromver"></span> <br> <br>
+    <b> Electron </b> &nbsp; <span id="ever"></span> <br> <br>
+    <b> NodeJS </b> &nbsp; <span id="nodever"></span> <br> <br>
+    <b> HTTP Parser </b> &nbsp; <span id="httpver"></span> <br> <br>
+    <b> V8 JS Engine </b> &nbsp; <span id="jsver"></span> <br> <br>
+    <hr>
+    <b> Network Hostname </b> &nbsp; <span id="hostname"></span> <br> <br>
+    <b> Operating System </b> &nbsp; <span id="osver"></span> <br> <br>
+    <b> Install Directory </b> &nbsp; <span id="instdir"></span> <br> <br>
+    <hr>
+</div>
+
+
+<script src="versionlogic.js"></script>
+<script src="../../version.js"></script>
+</body>

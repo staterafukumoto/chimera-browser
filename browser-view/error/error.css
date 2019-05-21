@@ -109,6 +109,31 @@ body{
 }
 
 .activesuggest{
-  text-decoration: underline !important;
+	text-decoration: underline !important;
+	cursor: pointer;
   color: #ededed !important;
+}
+
+#tryagain{
+	position: absolute;
+	width: 320px;
+	height: 32px;
+	line-height: 32px;
+	color: white;
+	text-align: center;
+	color: white;
+	left: calc(50% - 160px);
+	top: 252px;
+	background: #111;
+	border: 1px solid rgba(255,255,255,0.2);
+	transition: 0.2s background ease,
+							0.3s top ease;
+}
+
+#tryagain:hover{
+	background: rgba(255,255,255,0.1);
+}
+
+.taHeight{
+	top: 402px !important;
 }

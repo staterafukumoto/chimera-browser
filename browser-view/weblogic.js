@@ -62,8 +62,6 @@ function getCurrentURL(){
 }
 
 function goTo(url){
-    //make the webview go to url
-    // webview.loadURL(url);
     document.getElementsByClassName("activewbv")[0].loadURL(url)
 }
 
@@ -86,7 +84,10 @@ function parseURL(input){
         } else{
             goTo ("https://" + input)
         }
-    } else{
+    } else if (input.startsWith("system:")){
+        var to = input.substring(7)
+        system(to)
+    }else{
         googleSearch(input)
     }
 }

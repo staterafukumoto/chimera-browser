@@ -1,14 +1,7 @@
-// function chimeraFillAboutScreenData(){
-//     document.getElementById("blinkversion").innerHTML = "Blink " + process.versions.chrome
-//     document.getElementById("electronversion").innerHTML = "Electron " + process.versions.electron
-//     document.getElementById("veightversion").innerHTML = "v8 Engine" + process.versions.v8
-//     document.getElementById("unicodeversion").innerHTML = "Unicode " + process.versions.unicode
-//     document.getElementById("nodeversion").innerHTML = "Node JS" + process.versions.unicode
-// }
 function chimeraFillAboutScreenData(){
     var chromever = navigator.userAgent.match(/Chrom(?:e|ium)\/([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)/)[0].substr(7)
     document.getElementById("chromever").innerHTML = "<b>Chromium: </b>" + chromever
-    document.getElementById("chimeraver").innerHTML = "<b>Chimera: </b>" + chimeraversion
+    document.getElementById("chimeraver").innerHTML = "<b>Chimera: </b>" + chimeraversion + " <span class='codename'>"+ codename +"</span>"
 }
 
 function getChromeVersion () {

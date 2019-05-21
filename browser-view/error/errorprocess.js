@@ -1,18 +1,29 @@
-var errorcode = localStorage['tempErrorCode']
-function fillErrorCode(){
-    document.getElementById('errorcodeinner').innerHTML = errorcode.toLowerCase()
-}
+// var errorcode = localStorage['tempErrorCode']
 
 function conncetBadURL(){
-    var str = localStorage["tempErrorURL"].substr(5)
+    var str = errorURL.substr(5)
     window.location.href = "http" + str
 }
 
-if (errorcode == "ERR_CERT_AUTHORITY_INVALID"){
-    document.getElementById("maintext").innerHTML = "Your connection isn't secure, and the chimera wants to protect your security"
-    document.getElementById("casespecific").innerHTML = "Connect over HTTP and throw caution to the wind"
-    document.getElementById("litwo").innerHTML = "Yell at the host of the site"
-    document.getElementById("lithree").innerHTML = "Run a virus scan"
-    document.getElementById("casespecific").classList = "activesuggest"
-    document.getElementById("casespecific").onclick = conncetBadURL
+
+
+function fillErrorCode(er,url){
+    console.log("filling error data")
+    document.getElementById('errorcodeinner').innerHTML = er.toLowerCase()
+    window.errorURL = url
+    window.errorDesc = er
+    if (er == "ERR_CERT_AUTHORITY_INVALID"){
+        document.getElementById("header").innerHTML = "Sorry!"
+        document.getElementById("maintext").innerHTML = "Your connection isn't secure or private, and Chimera cannot guarantee your safety."
+        document.getElementById("casespecific").innerHTML = "Connect over an insecure connection anyways."
+        document.getElementById("litwo").innerHTML = "Yell at the host of the site"
+        document.getElementById("lithree").innerHTML = "Run a virus scan"
+
+        document.getElementById("casespecific").classList = "activesuggest"
+        document.getElementById("casespecific").onclick = conncetBadURL
+    }
+}
+
+function retry(){
+    window.location.href = errorURL
 }

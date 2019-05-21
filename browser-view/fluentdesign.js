@@ -22,6 +22,12 @@ FluentRevealEffect.applyEffect(".ubarnavbtn", {
     clickEffect: true
 })
 
+FluentRevealEffect.applyEffect(".zcontrol", {
+	lightColor: "rgba(255,255,255,0.2)",
+    gradientSize: 35,
+    clickEffect: true
+})
+
 FluentRevealEffect.applyEffect(".menuitem", {
 	lightColor: "rgba(255,255,255,0.2)",
     gradientSize: 180,
@@ -31,14 +37,14 @@ FluentRevealEffect.applyEffect(".menuitem", {
 FluentRevealEffect.applyEffect("#urlbar", {
 	lightColor: "rgba(255,255,255,0.2)",
     gradientSize: 250,
-    // clickEffect: true
-})
-
-FluentRevealEffect.applyEffect("#notsecure", {
-	lightColor: "rgba(255,255,255,0.2)",
-    gradientSize: 80,
     clickEffect: true
 })
+
+// FluentRevealEffect.applyEffect("#notsecure", {
+// 	lightColor: "rgba(255,255,255,0.2)",
+//     gradientSize: 80,
+//     clickEffect: true
+// })
 
 FluentRevealEffect.applyEffect(".bookmarkinput", {
 	lightColor: "rgba(255,255,255,0.2)",

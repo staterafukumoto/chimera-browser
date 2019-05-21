@@ -1,1 +1,2 @@
-const chimeraversion = "0.2.0"
+const chimeraversion = "0.3.0"
+const codename = "Coydog"

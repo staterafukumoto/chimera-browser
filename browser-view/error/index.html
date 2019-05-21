@@ -7,12 +7,12 @@
     <link href="error.css" rel="stylesheet">
     <link rel="shortcut icon" href="../../assets/icons/win/icon.ico">
 </head>
-<body onload="fillErrorCode()">
+<body>
 
 <div id="content">
     <img id="productlogo" class="productlogo" draggable="false" src="../img/error.png" title="Hi :D">
         <div id="sidecontent">
-            <span class="header"> Sorry! </span>
+            <span class="header" id="header"> Sorry! </span>
             <span class="version" id="maintext">An error occured and the chimera could not <br> deliver your page. He's trying his best, though.</span> <br>
         </div>
         <div id="errorcode"> Error Description: 
@@ -29,7 +29,10 @@
                 <li id="lifive">Play with opening and closing this box (it's fun)</li>
             </ul>
 
-        </div>
+</div>
+
+<span id="tryagain" onclick="retry()"> Try Again </span>
+
 <script src="errorprocess.js"></script>    
 <script src="showhide.js"></script>    
 </body>

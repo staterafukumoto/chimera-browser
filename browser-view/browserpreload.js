@@ -1,5 +1,1 @@
-const { ipcRenderer } = require('electron')    
-
-global.pingHost = () => {
-  ipcRenderer.sendToHost('ping')
-}
+alert('built in test for semidynamic preload')

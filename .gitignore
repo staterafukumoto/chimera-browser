@@ -1,5 +1,5 @@
 node_modules
 release-builds
-node_modules/
-.vs
 test-ext
+out
+.vs
