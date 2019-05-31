@@ -1,7 +1,22 @@
 body{
-  background: #111;
+    background: #111;
     user-select: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#all{
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 2px;
+  transform: scale(1);
+  transition: 0.3s all ease;
+}
+
+.allafter{
+  transform: scale(0.6) !important;
+  opacity: 0 !important;
 }
 
 #content{
@@ -115,7 +130,8 @@ body{
 }
 
 #tryagain{
-	position: absolute;
+  position: absolute;
+  cursor: pointer;
 	width: 320px;
 	height: 32px;
 	line-height: 32px;
@@ -136,4 +152,30 @@ body{
 
 .taHeight{
 	top: 402px !important;
+}
+
+#animator{
+  position: absolute;
+  /* left: calc(50% - 128px);
+  top: calc(50% - 2px);
+  height: 4px;
+  width: 256px; */
+  width: 320px;
+	height: 32px;
+	left: calc(50% - 160px);
+	top: 252px;
+  background: white;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s all ease-in-out;
+}
+
+.animatorafter{
+  left: 0px !important;
+  top: 0px !important;
+  height: 100% !important;
+  width: 100% !important;
+  border-radius: 0px !important;
+  opacity: 1 !important;
 }

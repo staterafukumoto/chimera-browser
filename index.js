@@ -235,5 +235,3 @@ function systemColour(){
     return "#cecece"
   }
 }
-
-console.log(systemColour())

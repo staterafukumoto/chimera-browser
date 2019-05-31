@@ -7,7 +7,11 @@ function goFwdActive(){
 }
 
 function refreshActive(){
-    document.getElementsByClassName("activewbv")[0].reload()
+    if (window.altKey == true){
+        window.location.href = ""
+    } else{
+        document.getElementsByClassName("activewbv")[0].reload()
+    }
 }
 
 function stopActive(){

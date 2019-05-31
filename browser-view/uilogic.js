@@ -57,10 +57,10 @@ function generateActiveWbv(uuid,url,elevation){ //this generates the frame itsel
     if (elevation == true){
         wbv.partition = elevpartition
         wbv.nodeintegration = true
-        wbv.preload = ""
+        // wbv.preload = ""
     } else{
         wbv.partition = regupartition
-        wbv.preload = preloadFile
+        // wbv.preload = preloadFile
     }
     if (typeof url === "undefined"){
         wbv.src = homepage

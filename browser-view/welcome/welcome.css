@@ -29,6 +29,7 @@ body{
 	z-index: 10;
 	box-shadow: 0px 0px 49px 0px rgba(255,0,255,1);
 	/* box-shadow: ; */
+	transform: translateZ(0);
 }
 
 @keyframes gradient { 
@@ -47,6 +48,7 @@ body{
 	transition: 0.3s all ease,
 				0.5s bottom ease;
 	z-index: 20;
+	transform: translateZ(0);
 	
 }
 

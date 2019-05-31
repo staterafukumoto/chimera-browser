@@ -25,5 +25,9 @@ function fillErrorCode(er,url){
 }
 
 function retry(){
-    window.location.href = errorURL
+    document.getElementById("animator").classList = "animatorafter"
+    document.getElementById("all").classList = "allafter"
+    window.setTimeout(function(){
+        window.location.href = errorURL
+    },200)
 }

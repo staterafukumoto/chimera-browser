@@ -14,7 +14,8 @@ body{
 
 .clock {
     position: absolute;
-    top: 60px;
+    /* top: 180px; */
+    top: calc(50% - 200px);
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     color: rgba(255,255,255,0.6);
@@ -31,12 +32,13 @@ body{
     right: 120px;
     width: calc(100% - 240px);
     left: 50%;
+    top: calc(50% - 24px);
+    height: 42px;
     transform: translateX(-50%) translateY(-50%);
     /* width: auto; */
-    height: 42px;
     font-size: 24px;
-    top: 140px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+    /* box-shadow: 0px 0px 44px 8px rgba(0,0,0,0.75); */
     outline: none;
     border: none;
     color: white;

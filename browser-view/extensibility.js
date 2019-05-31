@@ -1,3 +1,7 @@
+//  REWRITE THIS FUNCTION WITH
+//      ASYNCHRONOUS FILESYSTEM
+//            OPERATIONS
+
 if (!fs.existsSync(extensions_directory)){//find extensions folder
     try{
         fs.mkdirSync(chimera_directory) //make extensions folder
